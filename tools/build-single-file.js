@@ -11,7 +11,9 @@ const html = read('index.html');
 const css = read('assets/css/styles.css');
 const js = read('assets/js/main.js');
 
-const title = html.match(/<title>([\s\S]*?)<\/title>/)[1];
+/* The live page keeps its SEO title. The preview is named for the
+   gallery it gets listed in, so it uses the company name alone. */
+const title = 'Additive Manufacturing &amp; Engineering';
 const fontLinks = (html.match(/<link rel="stylesheet" href="https:\/\/fonts\.googleapis\.com[^>]*>/g) || []).join('\n');
 const preconnect = (html.match(/<link rel="preconnect"[^>]*>/g) || []).join('\n');
 const body = html.match(/<body>([\s\S]*)<\/body>/)[1]
