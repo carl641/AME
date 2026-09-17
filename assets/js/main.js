@@ -1,7 +1,10 @@
 /* =============================================================
    Additive Manufacturing & Engineering
-   No scroll listeners anywhere. Nav state and reveals both run
-   on IntersectionObserver.
+   Nav state and reveals run on IntersectionObserver. The one
+   scroll listener, at the bottom, is passive and frame throttled:
+   it sets the Z readout in the header and, only in browsers
+   without CSS scroll-driven animations, seeks the build motifs
+   (the px-* animations in styles.css) by scroll position.
    ============================================================= */
 (function () {
   'use strict';
@@ -190,6 +193,62 @@
         submit.classList.remove('is-busy');
       });
     });
+  }
+
+  /* ---------- build motifs ----------
+     styles.css binds every px-* animation to a scroll or view
+     timeline where the browser has them. Elsewhere the same
+     animations sit paused, one second long, and this seeks them:
+     currentTime = progress * 1000. The Z readout in the header
+     always runs from here; it climbs 0.02 mm per pixel scrolled,
+     one 40 micron layer every two pixels. */
+  var zOut = document.getElementById('z-readout');
+  var native = !!(window.CSS && CSS.supports && CSS.supports('animation-timeline: view()'));
+  var tracked = [];
+
+  if (!reduced && !native && Element.prototype.getAnimations) {
+    Array.prototype.forEach.call(document.querySelectorAll('[data-parallax]'), function (el) {
+      var anims = el.getAnimations({ subtree: true }).filter(function (a) {
+        return /^px-/.test(a.animationName || '');
+      });
+      if (anims.length) tracked.push({ el: el, page: el.getAttribute('data-parallax') === 'scroll', anims: anims });
+    });
+  }
+
+  if (!reduced && (zOut || tracked.length)) {
+    var clamp = function (n) { return n < 0 ? 0 : n > 1 ? 1 : n; };
+    var pending = false;
+
+    var paint = function () {
+      pending = false;
+      var y = window.scrollY || window.pageYOffset || 0;
+      var vh = window.innerHeight;
+      var pageP = clamp(y / Math.max(1, document.documentElement.scrollHeight - vh));
+
+      tracked.forEach(function (t) {
+        var p = pageP;
+        if (!t.page) {
+          var r = t.el.getBoundingClientRect();
+          p = clamp((vh - r.top) / (vh + r.height));
+        }
+        t.anims.forEach(function (a) { a.currentTime = p * 1000; });
+      });
+
+      if (zOut) {
+        var z = y * 0.02;
+        zOut.textContent = 'Z ' + ('000' + z.toFixed(2)).slice(-6) + ' mm';
+      }
+    };
+    var schedule = function () {
+      if (pending) return;
+      pending = true;
+      requestAnimationFrame(paint);
+    };
+
+    if (zOut) zOut.hidden = false;
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    paint();
   }
 
   /* ---------- footer year ---------- */
