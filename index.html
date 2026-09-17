@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://addmaneng.com/">
 <meta property="og:title" content="Additive Manufacturing &amp; Engineering, Inc.">
 <meta property="og:description" content="Metal parts too complex to machine. Laser powder bed fusion in Inconel 718 and GRCop-42, built in Huntsville, Alabama.">
-<meta property="og:image" content="https://addmaneng.com/assets/img/og-card.jpg">
+<meta property="og:image" content="https://addmaneng.com/assets/img/amebuilding-1.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,29 +29,23 @@
 
 <header class="nav" id="nav">
   <div class="nav__in">
-    <a class="brand" href="#main" aria-label="Additive Manufacturing and Engineering, home">
-      <svg class="brand__mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <rect x="2" y="15" width="20" height="3"></rect>
-        <rect x="4" y="10" width="16" height="3"></rect>
-        <rect x="6" y="5" width="12" height="3"></rect>
-      </svg>
-      <span class="brand__abbr">AME</span>
-      <span class="brand__full">Additive Manufacturing &amp; Engineering</span>
+    <a class="brand" href="index.html" aria-label="Additive Manufacturing and Engineering, home">
+      <span class="brand__logo"><img src="assets/img/ameLogo.png" alt="" width="788" height="446"></span>
+      <span class="brand__full">Additive Manufacturing<br>&amp; Engineering, Inc.</span>
     </a>
 
     <nav class="nav__links" id="nav-links" aria-label="Primary">
-      <a href="#capabilities">Capabilities</a>
-      <a href="#materials">Materials</a>
-      <a href="#work">Work</a>
-      <a href="#process">Process</a>
-      <a href="#about">About</a>
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
     </nav>
 
     <div class="nav__end">
       <button class="iconbtn" id="theme-toggle" type="button" aria-label="Switch color theme">
         <span class="material-symbols-outlined" aria-hidden="true">contrast</span>
       </button>
-      <a class="btn btn--primary btn--sm nav__cta" href="#contact">Request a quote</a>
+      <a class="btn btn--primary btn--sm nav__cta" href="contact.html#quote">Request a quote</a>
       <button class="iconbtn nav__burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="material-symbols-outlined" aria-hidden="true">menu</span>
       </button>
@@ -61,26 +55,25 @@
 
 <main id="main">
 
-  <!-- ============ HERO : asymmetric split ============ -->
-  <section class="hero">
+  <!-- ============ HERO : dark band, metallic headline, asymmetric split ============ -->
+  <section class="hero band">
     <div class="wrap hero__grid">
       <div class="hero__copy">
         <p class="eyebrow rise" style="--d:0ms">Laser powder bed fusion</p>
-        <h1 class="hero__h1 rise" style="--d:70ms">Metal parts too complex to machine.</h1>
+        <h1 class="hero__h1 metal rise" style="--d:70ms">Metal parts too complex to machine.</h1>
         <p class="hero__sub rise" style="--d:140ms">
           Full melt metal printing in Inconel 718 and GRCop-42, from first prototype through pilot production.
         </p>
         <div class="hero__cta rise" style="--d:210ms">
-          <a class="btn btn--primary" href="#contact">Request a quote</a>
-          <a class="btn btn--ghost" href="#capabilities">See capabilities</a>
+          <a class="btn btn--primary" href="contact.html#quote">Request a quote</a>
+          <a class="btn btn--ghost" href="services.html">See our services</a>
         </div>
       </div>
 
       <div class="hero__asset rise" style="--d:120ms">
-        <figure class="shot shot--tall"
-                data-src="assets/img/hero-build-chamber.jpg"
-                data-label="Hero photo: build chamber or a finished metal part, 1200 x 1500"
-                data-alt="Metal part produced by laser powder bed fusion, still on the build plate"></figure>
+        <figure class="shot shot--sq">
+          <img src="assets/img/sample2.jpg" alt="Sectioned metal printed assembly standing on the AME shop floor, with larger printed parts behind it" width="4032" height="3024" fetchpriority="high" decoding="async" style="object-position: 45% 50%">
+        </figure>
         <ul class="rail" aria-label="Platform at a glance">
           <li><span class="rail__k">Platform</span><span class="rail__v">EOS M400</span></li>
           <li><span class="rail__k">Envelope</span><span class="rail__v">400 &times; 400 &times; 400 mm</span></li>
@@ -110,10 +103,9 @@
 
       <div class="bento">
         <article class="cell cell--a reveal">
-          <figure class="shot"
-                  data-src="assets/img/lpbf-machine.jpg"
-                  data-label="Photo: the EOS M400 on the shop floor, 1400 x 900"
-                  data-alt="EOS M400 laser powder bed fusion machine on the shop floor"></figure>
+          <figure class="shot">
+            <img src="assets/img/printer-1.jpg" alt="EOS M400 laser powder bed fusion machine on the AME shop floor" width="2390" height="1792" loading="lazy" decoding="async" style="object-position: 50% 60%">
+          </figure>
           <div class="cell__body">
             <h3>Laser powder bed fusion</h3>
             <p>Full melt metal printing on an EOS M400, the largest commercial additive platform running in Alabama. Fine features and internal passages that no cutter can reach.</p>
@@ -213,10 +205,9 @@
       <p class="eyebrow reveal">Selected work</p>
       <h2 class="feature__h reveal">A GRCop-42 fuel injector, printed on our floor.</h2>
 
-      <figure class="shot shot--wide reveal"
-              data-src="assets/img/grcop-injector.jpg"
-              data-label="Photo: the GRCop-42 fuel injector, 1800 x 1000"
-              data-alt="Additively manufactured GRCop-42 fuel injector"></figure>
+      <figure class="shot shot--wide reveal">
+        <img src="assets/img/sample8.jpg" alt="Large copper alloy part with helical cooling channels, printed at AME" width="4032" height="3024" loading="lazy" decoding="async" style="object-position: 50% 45%">
+      </figure>
 
       <div class="feature__meta">
         <div class="reveal"><span class="k">Design</span><span class="v">In Space</span></div>
@@ -239,28 +230,28 @@
 
     <div class="strip" id="strip" tabindex="0" role="region" aria-label="Gallery of printed parts">
       <div class="strip__item">
-        <figure class="shot shot--sq" data-src="assets/img/gallery-1.jpg" data-label="Gallery 1, 1000 x 1000" data-alt="Inconel 718 printed component"></figure>
-        <p class="shot__cap">Inconel 718</p>
+        <figure class="shot shot--sq"><img src="assets/img/sample1.jpg" alt="Small copper lattice cylinder with an as built surface" width="4032" height="3024" loading="lazy" decoding="async"></figure>
+        <p class="shot__cap">Copper lattice test piece</p>
       </div>
       <div class="strip__item">
-        <figure class="shot shot--sq" data-src="assets/img/gallery-2.jpg" data-label="Gallery 2, 1000 x 1000" data-alt="GRCop-42 printed component"></figure>
-        <p class="shot__cap">GRCop-42</p>
+        <figure class="shot shot--sq"><img src="assets/img/sample7.jpg" alt="Sectioned metal printed part revealing tall internal cooling channels" width="4032" height="3024" loading="lazy" decoding="async"></figure>
+        <p class="shot__cap">Cutaway, cooling channels</p>
       </div>
       <div class="strip__item">
-        <figure class="shot shot--sq" data-src="assets/img/gallery-3.jpg" data-label="Gallery 3, 1000 x 1000" data-alt="As built surface texture on a printed part"></figure>
-        <p class="shot__cap">As built surface</p>
+        <figure class="shot shot--sq"><img src="assets/img/sample3.jpg" alt="Rows of copper pins still attached to the build plate, dusted with powder" width="4032" height="3024" loading="lazy" decoding="async"></figure>
+        <p class="shot__cap">Pins on the build plate</p>
       </div>
       <div class="strip__item">
-        <figure class="shot shot--sq" data-src="assets/img/gallery-4.jpg" data-label="Gallery 4, 1000 x 1000" data-alt="Internal channel geometry in a printed part"></figure>
-        <p class="shot__cap">Internal channels</p>
+        <figure class="shot shot--sq"><img src="assets/img/sample4.jpg" alt="Metal printed sculptural part showing the as built surface texture" width="4032" height="3024" loading="lazy" decoding="async" style="object-position: 40% 50%"></figure>
+        <p class="shot__cap">As built surface detail</p>
       </div>
       <div class="strip__item">
-        <figure class="shot shot--sq" data-src="assets/img/gallery-5.jpg" data-label="Gallery 5, 1000 x 1000" data-alt="Parts still attached to the build plate"></figure>
-        <p class="shot__cap">Build plate</p>
+        <figure class="shot shot--sq"><img src="assets/img/sample5.jpg" alt="Printed housings, brackets and a manifold laid out on the bench" width="4032" height="3024" loading="lazy" decoding="async"></figure>
+        <p class="shot__cap">Housings and manifolds</p>
       </div>
       <div class="strip__item">
-        <figure class="shot shot--sq" data-src="assets/img/gallery-6.jpg" data-label="Gallery 6, 1000 x 1000" data-alt="Finished part after surface treatment"></figure>
-        <p class="shot__cap">After finishing</p>
+        <figure class="shot shot--sq"><img src="assets/img/sample6.jpg" alt="Sectioned block showing internal passages printed in one piece" width="4032" height="3024" loading="lazy" decoding="async"></figure>
+        <p class="shot__cap">Internal passages, sectioned</p>
       </div>
     </div>
   </section>
@@ -283,121 +274,37 @@
     </div>
   </section>
 
-  <!-- ============ ABOUT : text plus figure ============ -->
+  <!-- ============ ABOUT : teaser, full story lives on about.html ============ -->
   <section class="section about" id="about">
-    <div class="wrap about__grid">
-      <div class="about__copy reveal">
+    <div class="wrap split">
+      <div class="split__copy reveal">
+        <p class="eyebrow">About AME</p>
         <h2>A small shop, sat next to the people who launch things.</h2>
         <p>Additive Manufacturing &amp; Engineering was incorporated in 2018 in Huntsville, Alabama, a few miles from Marshall Space Flight Center. We are a HUBZone and Small Disadvantaged Business certified supplier, and the team behind the machines has 35 combined years in additive.</p>
         <p>Customers come to us for intricate metal parts, prototypes and models that conventional manufacturing cannot produce, and for pilot series work in medical, automotive and aerospace.</p>
-        <a class="btn btn--ghost" href="#contact">Request a quote</a>
+        <a class="btn btn--ghost" href="about.html">More about AME</a>
       </div>
-      <figure class="shot shot--tall reveal"
-              data-src="assets/img/facility.jpg"
-              data-label="Photo: facility exterior or team on the floor, 1000 x 1250"
-              data-alt="The Additive Manufacturing and Engineering facility in Huntsville, Alabama"></figure>
+      <figure class="shot shot--tall reveal">
+        <img src="assets/img/warehousefloor-1.jpg" alt="The AME shop floor, with finished parts on a bench and the EOS machine at the far wall" width="2390" height="1792" loading="lazy" decoding="async" style="object-position: 42% 50%">
+      </figure>
     </div>
   </section>
 
-  <!-- ============ CONTACT : info plus form ============ -->
-  <section class="section contact" id="contact">
-    <div class="wrap contact__grid">
-      <div class="contact__info reveal">
-        <h2>Request a quote</h2>
-        <p class="contact__lead">Send the model and the material. If it can be built, we will tell you what it costs and how long it takes.</p>
-
-        <div class="contact__block">
-          <span class="material-symbols-outlined" aria-hidden="true">call</span>
-          <div><span class="k">Phone</span><a class="v" href="tel:+12565271737">(256) 527-1737</a></div>
-        </div>
-        <div class="contact__block">
-          <span class="material-symbols-outlined" aria-hidden="true">location_on</span>
-          <div><span class="k">Shop</span><span class="v">128 Hall Bryant Cir NW<br>Huntsville, AL 35806</span></div>
-        </div>
-        <div class="contact__block">
-          <span class="material-symbols-outlined" aria-hidden="true">badge</span>
-          <div><span class="k">Standing</span><span class="v">HUBZone certified, Small Disadvantaged Business</span></div>
-        </div>
+  <!-- ============ CTA : dark band, metallic headline ============ -->
+  <section class="cta band" aria-labelledby="cta-h">
+    <div class="wrap cta__grid">
+      <div class="reveal">
+        <p class="eyebrow">Request a quote</p>
+        <h2 class="metal" id="cta-h">Send the model. We&rsquo;ll tell you if it builds.</h2>
+        <p>Pricing and an honest read on the geometry, from an engineer. Call the shop or send the request and we will pick it up from there.</p>
       </div>
-
-      <form class="form reveal" id="quote-form" novalidate>
-        <div class="field">
-          <label for="f-name">Name</label>
-          <input id="f-name" name="name" type="text" autocomplete="name" required>
-          <p class="err" id="e-name" hidden>Tell us who to reply to.</p>
-        </div>
-
-        <div class="field">
-          <label for="f-org">Company</label>
-          <input id="f-org" name="company" type="text" autocomplete="organization">
-          <p class="hint">Optional.</p>
-        </div>
-
-        <div class="field">
-          <label for="f-email">Email</label>
-          <input id="f-email" name="email" type="email" autocomplete="email" required>
-          <p class="err" id="e-email" hidden>That address does not look right.</p>
-        </div>
-
-        <div class="field">
-          <label for="f-mat">Material</label>
-          <select id="f-mat" name="material">
-            <option value="in718">Inconel 718</option>
-            <option value="grcop42">GRCop-42</option>
-            <option value="unsure">Not sure yet</option>
-          </select>
-        </div>
-
-        <div class="field field--full">
-          <label for="f-msg">What are you building</label>
-          <textarea id="f-msg" name="message" rows="4" required></textarea>
-          <p class="hint">Quantity, envelope, tolerances, target date. Anything you have.</p>
-          <p class="err" id="e-msg" hidden>Give us a line or two to work with.</p>
-        </div>
-
-        <div class="field field--full form__foot">
-          <button class="btn btn--primary" type="submit" id="submit">
-            <span class="submit__label">Send request</span>
-            <span class="spinner" aria-hidden="true"></span>
-          </button>
-          <p class="status" id="form-status" role="status" aria-live="polite"></p>
-        </div>
-      </form>
+      <div class="cta__act reveal">
+        <a class="cta__phone" href="tel:+12565271737"><span>Call the shop</span>(256) 527-1737</a>
+        <a class="btn btn--primary" href="contact.html#quote">Request a quote</a>
+      </div>
     </div>
   </section>
 </main>
-
-<footer class="foot">
-  <div class="wrap foot__grid">
-    <div class="foot__brand">
-      <svg class="brand__mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <rect x="2" y="15" width="20" height="3"></rect>
-        <rect x="4" y="10" width="16" height="3"></rect>
-        <rect x="6" y="5" width="12" height="3"></rect>
-      </svg>
-      <p>Additive Manufacturing &amp;<br>Engineering, Inc.</p>
-    </div>
-
-    <nav class="foot__links" aria-label="Footer">
-      <a href="#capabilities">Capabilities</a>
-      <a href="#materials">Materials</a>
-      <a href="#work">Work</a>
-      <a href="#process">Process</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <address class="foot__addr">
-      128 Hall Bryant Cir NW<br>
-      Huntsville, AL 35806<br>
-      <a href="tel:+12565271737">(256) 527-1737</a>
-    </address>
-  </div>
-  <div class="wrap foot__bar">
-    <p>&copy; <span id="yr">2026</span> Additive Manufacturing &amp; Engineering, Inc.</p>
-    <p>HUBZone certified. Small Disadvantaged Business.</p>
-  </div>
-</footer>
 
 <script type="application/ld+json">
 {
@@ -406,6 +313,8 @@
   "name": "Additive Manufacturing & Engineering, Inc.",
   "alternateName": "AME",
   "url": "https://addmaneng.com/",
+  "logo": "https://addmaneng.com/assets/img/ameLogo.png",
+  "image": "https://addmaneng.com/assets/img/amebuilding-1.jpg",
   "telephone": "+1-256-527-1737",
   "foundingDate": "2018",
   "description": "Metal 3D printing by laser powder bed fusion in Inconel 718 and GRCop-42. HUBZone certified supplier in Huntsville, Alabama serving aerospace, defense, medical and automotive programs.",
@@ -419,6 +328,33 @@
   }
 }
 </script>
+
+<footer class="foot">
+  <div class="wrap foot__grid">
+    <div class="foot__brand">
+      <div class="foot__logo"><img src="assets/img/ameLogo.png" alt="AME, Additive Manufacturing Engineering" width="788" height="446" loading="lazy"></div>
+      <p>Metal laser powder bed fusion in Inconel 718 and GRCop-42. HUBZone and Small Disadvantaged Business certified, Huntsville, Alabama.</p>
+    </div>
+
+    <nav class="foot__links" aria-label="Footer">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html#quote">Request a quote</a>
+    </nav>
+
+    <address class="foot__addr">
+      128 Hall Bryant Cir NW<br>
+      Huntsville, AL 35806<br>
+      <a href="tel:+12565271737">(256) 527-1737</a>
+    </address>
+  </div>
+  <div class="wrap foot__bar">
+    <p>&copy; <span id="yr">2026</span> Additive Manufacturing &amp; Engineering, Inc.</p>
+    <p>HUBZone certified. Small Disadvantaged Business.</p>
+  </div>
+</footer>
 
 <script src="assets/js/main.js" defer></script>
 </body>
