@@ -30,10 +30,12 @@
   --focus:      #0D6F59;
   --danger:     #B3261E;
 
-  /* Brand metal: white to #616161, as in the logo letters. */
+  /* Brand metal: white to #616161, as in the logo letters. Poured
+     into elements only (rules, frames, the inner page stage), never
+     into type. --metal-rule runs on into the brand teal. */
   --metal-a:    #FFFFFF;
   --metal-b:    #616161;
-  --metal-text: linear-gradient(180deg, #FFFFFF 0%, #DCDCDC 42%, #616161 100%);
+  --metal-rule: linear-gradient(180deg, #FFFFFF 0%, #DCDCDC 34%, #616161 68%, var(--accent) 100%);
 
   /* Dark bands (hero, calls to action) stay dark in both themes. */
   --band:      #141414;
@@ -156,18 +158,17 @@ ul, ol, dl, dd { margin: 0; padding: 0; list-style: none; }
   margin-bottom: 20px;
 }
 
-/* Metallic display text: the logo gradient poured into type. Only
-   used on dark bands, where the white top and gray foot both read. */
-.metal {
-  color: var(--band-fg);
-}
-@supports ((-webkit-background-clip: text) or (background-clip: text)) {
-  .metal {
-    background: var(--metal-text);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
+/* Display text on the dark bands is solid. The brand metal stands
+   beside it instead, as the rule on .copyrule. */
+.metal { color: var(--band-fg); }
+
+/* A vertical metal rule beside a block of copy: white through gray
+   into teal, the logo gradient as an element rather than as type. */
+.copyrule { position: relative; padding-left: 26px; }
+.copyrule::before {
+  content: ""; position: absolute; left: 0; top: 6px; bottom: 6px; width: 3px;
+  border-radius: 2px;
+  background: var(--metal-rule);
 }
 
 /* Icons are hidden until the Material Symbols face actually loads.
@@ -231,6 +232,26 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
 }
 .nav.is-stuck { border-bottom-color: var(--line); }
 
+/* Build progress: a teal line along the foot of the header fills as
+   the page scrolls, and a Z height readout beside the theme toggle
+   climbs with it (main.js sets the number). */
+.nav::after {
+  content: ""; position: absolute; left: 0; bottom: -1px; height: 2px; width: 100%;
+  background: var(--accent);
+  transform: scaleX(0); transform-origin: 0 50%;
+  pointer-events: none;
+}
+.nav__z {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: .1em;
+  font-variant-numeric: tabular-nums;
+  color: var(--fg-3);
+  margin-right: 4px;
+  white-space: nowrap;
+}
+.nav__z::before { content: ""; width: 6px; height: 6px; background: var(--accent); }
+.nav__z[hidden] { display: none; }
+
 .nav__in {
   max-width: var(--wrap); margin: 0 auto; padding: 0 24px;
   height: 100%;
@@ -278,6 +299,9 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
    Hero and calls to action. Dark in both themes so the metallic
    headline always has a floor to stand on. */
 .band {
+  position: relative;
+  overflow: hidden;
+  overflow: clip; /* clip without becoming a scroll container, so view() timelines inside still track the page */
   background: linear-gradient(180deg, var(--band) 0%, var(--band-2) 100%);
   color: var(--band-fg);
   --focus: var(--accent);
@@ -287,9 +311,14 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
 .band .eyebrow { color: var(--accent); }
 .band .btn--ghost { color: var(--band-fg); border-color: rgba(255, 255, 255, .28); }
 .band .btn--ghost:hover { border-color: #FFFFFF; background: rgba(255, 255, 255, .06); }
+.band > .wrap { position: relative; z-index: 1; }
 
 /* ---------- hero ---------- */
 .hero { padding: clamp(48px, 6vw, 84px) 0 clamp(56px, 7vw, 96px); }
+.hero::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(55% 70% at 16% 40%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 70%);
+}
 .hero__grid {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
@@ -300,7 +329,6 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
   font-size: clamp(2.3rem, 4.4vw, 3.4rem);
   font-weight: 600;
   margin-bottom: 22px;
-  padding-bottom: .08em; /* room for descenders inside the clipped gradient */
 }
 .hero__sub {
   font-size: clamp(1.02rem, 1.5vw, 1.18rem);
@@ -310,14 +338,20 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
 }
 .hero__cta { display: flex; flex-wrap: wrap; gap: 12px; }
 
-.hero__asset { display: grid; gap: 0; }
+/* The photo and its rail sit in a one pixel gradient frame: white
+   along the top edge, fading through the band, teal along the foot. */
+.hero__asset {
+  display: grid; gap: 0;
+  padding: 1px;
+  border-radius: var(--r);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .55) 0%, rgba(255, 255, 255, .10) 45%, var(--accent) 100%);
+}
 .rail {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border: 1px solid var(--band-line);
-  border-top: 0;
-  background: rgba(255, 255, 255, .04);
-  border-radius: 0 0 var(--r) var(--r);
+  border-top: 1px solid var(--band-line);
+  background: var(--band-2);
+  border-radius: 0 0 calc(var(--r) - 1px) calc(var(--r) - 1px);
 }
 .rail li { padding: 14px 16px; display: grid; gap: 4px; }
 .rail li + li { border-left: 1px solid var(--band-line); }
@@ -339,7 +373,7 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
 .shot--wide { aspect-ratio: 16 / 9; }
 .shot--cine { aspect-ratio: 21 / 9; }
 .shot--sq   { aspect-ratio: 1 / 1; }
-.hero__asset .shot { border-radius: var(--r) var(--r) 0 0; aspect-ratio: 1 / 1; border-color: var(--band-line); background: var(--band-2); }
+.hero__asset .shot { border: 0; border-radius: calc(var(--r) - 1px) calc(var(--r) - 1px) 0 0; aspect-ratio: 1 / 1; background: var(--band-2); }
 
 .shot > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
@@ -370,11 +404,14 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
    gradient, white down to #616161, and the photo hangs over the
    seam into the next section. */
 .pagehead { background: var(--metal-a); }
-.pagehead__copy { padding: clamp(44px, 6vw, 80px) 0 clamp(28px, 4vw, 44px); max-width: 68ch; }
+.pagehead__copy { padding: clamp(44px, 6vw, 80px) 24px clamp(28px, 4vw, 44px); max-width: 68ch; }
+.pagehead__copy.copyrule { padding-left: 50px; }
+.pagehead__copy.copyrule::before { left: 24px; top: calc(clamp(44px, 6vw, 80px) + 6px); bottom: calc(clamp(28px, 4vw, 44px) + 6px); }
 .pagehead h1 { font-size: clamp(2.2rem, 4.4vw, 3.4rem); margin-bottom: 18px; }
 .pagehead__lead { font-size: clamp(1.05rem, 1.6vw, 1.25rem); color: var(--fg-2); max-width: 58ch; }
 .pagehead__lead + p { margin-top: 14px; color: var(--fg-2); max-width: 62ch; }
 .pagehead__stage {
+  position: relative;
   background: linear-gradient(180deg, var(--metal-a) 0%, var(--metal-b) 100%);
   padding-top: clamp(28px, 5vw, 64px);
 }
@@ -464,8 +501,20 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
 }
 
 /* ---------- platform stats ---------- */
-.platform { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.platform__h { font-size: clamp(1.75rem, 3.6vw, 2.9rem); max-width: 20ch; margin-bottom: clamp(36px, 5vw, 60px); }
+/* Powder bed: a faint dot grid under the stats, and the build volume
+   figure (.vol, below) beside the headline. */
+.platform {
+  background:
+    radial-gradient(circle, color-mix(in srgb, var(--fg) 16%, transparent) .8px, transparent 1.3px) 0 0 / 18px 18px,
+    var(--bg-2);
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+}
+.platform__top {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 380px);
+  gap: clamp(32px, 5vw, 72px); align-items: end;
+  margin-bottom: clamp(36px, 5vw, 60px);
+}
+.platform__h { font-size: clamp(1.75rem, 3.6vw, 2.9rem); max-width: 20ch; }
 .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
 .stat { padding: 0 28px; }
 .stat:first-child { padding-left: 0; }
@@ -479,10 +528,15 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
 /* ---------- materials ---------- */
 .mats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .mat {
+  position: relative; overflow: hidden;
   border: 1px solid var(--line); border-radius: var(--r);
   padding: clamp(26px, 3vw, 40px);
   background: var(--bg-2);
   display: grid; align-content: start; gap: 14px;
+}
+.mat::before {
+  content: ""; position: absolute; left: -1px; top: -1px; bottom: -1px; width: 3px;
+  background: var(--metal-rule);
 }
 .mat__code { font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent-ink); }
 .mat h3 { font-size: clamp(1.5rem, 2.4vw, 2rem); }
@@ -569,7 +623,7 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
 /* ---------- call to action band ---------- */
 .cta { padding: clamp(64px, 9vw, 120px) 0; }
 .cta__grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr); gap: clamp(32px, 5vw, 72px); align-items: end; }
-.cta h2 { font-size: clamp(1.9rem, 4vw, 3.1rem); max-width: 18ch; padding-bottom: .08em; }
+.cta h2 { font-size: clamp(1.9rem, 4vw, 3.1rem); max-width: 18ch; }
 .cta p { color: var(--band-fg-2); max-width: 46ch; margin-top: 18px; }
 .cta__act { display: grid; gap: 18px; justify-items: start; }
 .cta__phone { font-family: var(--mono); font-size: 1.05rem; color: var(--band-fg); text-decoration: none; }
@@ -667,8 +721,116 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
 }
 
 /* =============================================================
+   Build motifs. Decoration drawn from the process itself: layer
+   lines that drift at different rates as you scroll, a laser scan
+   between sections, the build volume filling one layer at a time,
+   the 67 degree hatch turn between layers, a laser pass over a
+   photo on hover. Each scroll coupled piece is a CSS animation
+   named px-*; the motion block below binds it to a scroll or view
+   timeline, and main.js seeks the same animation in browsers
+   without them. The static values here are what reduced motion
+   and no-JS visitors see.
+   ============================================================= */
+
+/* layer lines: three sheets of teal hairlines plus one lit layer.
+   Each sheet overhangs its box by its travel (--t) so it never
+   shows an edge, and --dir sets which way it drifts. */
+.layers {
+  position: absolute; inset: 0;
+  overflow: hidden; overflow: clip;
+  pointer-events: none;
+  --lc: color-mix(in srgb, var(--accent) 24%, transparent);
+}
+.layers__s {
+  position: absolute; left: 0; right: 0;
+  top: calc(-1 * var(--t)); bottom: calc(-1 * var(--t));
+  background: repeating-linear-gradient(180deg, var(--lc) 0 1px, transparent 1px var(--gap));
+  opacity: var(--o, 1);
+}
+.layers__s--1 { --gap: 34px;  --t: 40px;  --dir: 1;  --o: .4; }
+.layers__s--2 { --gap: 89px;  --t: 90px;  --dir: -1; --o: .8; }
+.layers__s--3 { --gap: 233px; --t: 180px; --dir: -1; --o: 1; }
+.layers__z {
+  top: 64%; bottom: auto; height: 1px;
+  background: var(--accent);
+  box-shadow: 0 0 14px 1px var(--accent);
+  opacity: .5;
+  --t: 120px; --dir: -1;
+}
+.hero .layers {
+  -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, .45), #000 55%);
+  mask-image: linear-gradient(90deg, rgba(0, 0, 0, .45), #000 55%);
+}
+.pagehead__stage .layers { --lc: color-mix(in srgb, var(--accent) 34%, transparent); }
+.cta .layers__s--1 { --o: .26; } /* the hatch already textures the band */
+
+/* scan: a hairline between sections. The laser spot crosses it
+   while the line travels the viewport. */
+.scan { position: relative; height: 14px; overflow: hidden; overflow: clip; }
+.scan--gap { margin-bottom: clamp(40px, 6vw, 72px); }
+.scan::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--line-2); }
+.scan::after {
+  content: ""; position: absolute; left: 0; top: calc(50% - 1px); height: 3px; width: 100%;
+  background: linear-gradient(90deg, transparent, var(--accent) 38%, var(--accent-2) 50%, var(--accent) 62%, transparent) 0 0 / 220px 100% no-repeat;
+  filter: drop-shadow(0 0 4px var(--accent));
+  transform: translateX(35%);
+}
+
+/* hatch: the scan strategy. Stripes that turn 67 degrees, the
+   rotation between one layer and the next, as the band scrolls. */
+.hatch {
+  position: absolute; right: -8%; top: 50%;
+  width: 560px; height: 560px;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, color-mix(in srgb, var(--accent) 34%, transparent) 0 1px, transparent 1px 9px);
+  -webkit-mask-image: radial-gradient(circle, #000 38%, transparent 68%);
+  mask-image: radial-gradient(circle, #000 38%, transparent 68%);
+  transform: translateY(-50%) rotate(34deg);
+}
+
+/* laser pass: hovering a photo sweeps a teal line down it */
+.shot--laser::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent, var(--accent) 50%, transparent) 0 0 / 100% 2px no-repeat,
+    linear-gradient(180deg, transparent, color-mix(in srgb, var(--accent) 30%, transparent) 50%, transparent) 0 0 / 100% 28px no-repeat;
+  opacity: 0;
+  transition: opacity .2s var(--ease);
+}
+.shot--laser:hover::after { opacity: 1; }
+
+/* build volume: an isometric 400 mm cube. The current layer plane
+   rises through it and the built layers hatch in beneath. The two
+   side faces are rectangles inside skewed groups, so clipping them
+   from the top in their own space cuts parallel to the plane. */
+.vol { margin: 0; width: 100%; max-width: 380px; justify-self: end; }
+.vol svg { display: block; width: 100%; height: auto; overflow: visible; }
+.vol__hidden line { stroke: var(--fg-3); stroke-width: 1; stroke-dasharray: 3 4; opacity: .45; }
+.vol__edges polygon, .vol__edges line { fill: none; stroke: var(--fg-3); stroke-width: 1; opacity: .8; }
+.vol__hatch-bg { fill: var(--accent); opacity: .12; }
+.vol__hatch-ln { fill: var(--accent); opacity: .6; }
+.vol__face { fill: url(#vol-hatch); clip-path: inset(50% 0 0 0); }
+.vol__face--r { opacity: .7; }
+.vol__plane {
+  transform: translateY(-75px);
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--accent) 55%, transparent));
+}
+.vol__plane polygon { fill: var(--accent); fill-opacity: .2; stroke: var(--accent); stroke-width: 1.25; }
+.vol__plane line { stroke: var(--accent); stroke-width: 1; }
+.vol__plane circle { fill: var(--accent); }
+.vol text { font: 500 9.5px var(--mono); letter-spacing: .1em; fill: var(--fg-3); }
+.vol__plane text { fill: var(--accent-ink); }
+.vol figcaption {
+  display: table; margin-left: auto; /* shrink to fit, so the plate knocks the dots out behind the words */
+  font-family: var(--mono); font-size: 11px; color: var(--fg-3);
+  letter-spacing: .04em; margin-top: 10px; padding: 3px 6px;
+  background: var(--bg-2);
+}
+
+/* =============================================================
    Motion. Entry cascade on the hero, IntersectionObserver
-   reveals elsewhere. Both collapse under reduced motion.
+   reveals elsewhere, scroll and view timelines on the build
+   motifs. All of it collapses under reduced motion.
    ============================================================= */
 @media (prefers-reduced-motion: no-preference) {
   .rise { opacity: 0; transform: translateY(18px); animation: rise .7s var(--ease) forwards; animation-delay: var(--d, 0ms); }
@@ -685,7 +847,42 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
   .stat.reveal:nth-child(3), .step.reveal:nth-child(3), .cred.reveal:nth-child(3), .svc.reveal:nth-child(3), .pgrid .reveal:nth-child(3), .trio .reveal:nth-child(3), .clients__grid .reveal:nth-child(3) { transition-delay: .12s; }
   .stat.reveal:nth-child(4), .step.reveal:nth-child(4), .cred.reveal:nth-child(4), .clients__grid .reveal:nth-child(4) { transition-delay: .18s; }
   .step.reveal:nth-child(5) { transition-delay: .24s; }
+
+  /* scroll coupled decoration */
+  .nav::after { animation-name: px-progress; }
+  .layers__s { animation-name: px-drift; }
+  .scan::after { animation-name: px-scan; }
+  .hatch { animation-name: px-hatch; }
+  .vol__plane { animation-name: px-rise; }
+  .vol__face { animation-name: px-build; }
+  .nav::after, .layers__s, .scan::after, .hatch, .vol__plane, .vol__face {
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+  }
+  @supports (animation-timeline: view()) {
+    .layers__s, .scan::after, .hatch { animation-timeline: view(); animation-duration: auto; }
+    .nav::after { animation-timeline: scroll(root); animation-duration: auto; }
+    .vol { view-timeline-name: --vol; }
+    .vol__plane, .vol__face { animation-timeline: --vol; animation-duration: auto; }
+  }
+  @supports not (animation-timeline: view()) {
+    /* paused at one second long; main.js seeks them by scroll position */
+    .nav::after, .layers__s, .scan::after, .hatch, .vol__plane, .vol__face { animation-duration: 1s; animation-play-state: paused; }
+  }
+
+  .shot--laser:hover::after { animation: laser-pass 1.6s linear infinite; }
 }
+
+@keyframes px-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes px-drift {
+  from { transform: translateY(calc(var(--t) * var(--dir) * -1)); }
+  to   { transform: translateY(calc(var(--t) * var(--dir))); }
+}
+@keyframes px-scan { from { transform: translateX(-220px); } to { transform: translateX(100%); } }
+@keyframes px-hatch { from { transform: translateY(-50%) rotate(0deg); } to { transform: translateY(-50%) rotate(67deg); } }
+@keyframes px-rise { from { transform: translateY(0); } to { transform: translateY(-150px); } }
+@keyframes px-build { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes laser-pass { from { background-position: 0 0, 0 0; } to { background-position: 0 100%, 0 100%; } }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -730,6 +927,10 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
   .feature__meta > div:nth-child(n+3) { border-top: 1px solid var(--line); }
   .pgrid, .trio { grid-template-columns: repeat(2, 1fr); }
   .pagehead__media .shot--cine, .pagehead__media .map { aspect-ratio: 16 / 9; }
+  .platform__top { grid-template-columns: 1fr; align-items: start; }
+  .vol { justify-self: start; max-width: 320px; }
+  .vol figcaption { margin-left: 0; }
+  .nav__z { display: none; }
 }
 
 @media (max-width: 760px) {
@@ -773,4 +974,8 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
   .rail li + li { border-left: 0; border-top: 1px solid var(--band-line); }
   .pgrid, .trio { grid-template-columns: 1fr; }
   .pagehead__media .shot--cine, .pagehead__media .map { aspect-ratio: 4 / 3; }
+  .copyrule { padding-left: 20px; }
+  .pagehead__copy.copyrule { padding-left: 44px; }
+  .hatch { width: 380px; height: 380px; top: auto; bottom: -300px; right: -140px; } /* lower right corner, clear of the copy */
+  .layers__s--3 { --gap: 144px; }
 }

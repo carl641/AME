@@ -26,7 +26,7 @@
 
 <div id="top-sentinel" aria-hidden="true"></div>
 
-<header class="nav" id="nav">
+<header class="nav" id="nav" data-parallax="scroll">
   <div class="nav__in">
     <a class="brand" href="index.html" aria-label="Additive Manufacturing and Engineering, home">
       <span class="brand__logo"><img src="assets/img/ameLogo.png" alt="" width="788" height="446"></span>
@@ -41,6 +41,7 @@
     </nav>
 
     <div class="nav__end">
+      <span class="nav__z" id="z-readout" aria-hidden="true" hidden>Z 000.00 mm</span>
       <button class="iconbtn" id="theme-toggle" type="button" aria-label="Switch color theme">
         <span class="material-symbols-outlined" aria-hidden="true">contrast</span>
       </button>
@@ -56,12 +57,18 @@
 
   <!-- ============ PAGE HEADER : copy on white, photo hangs over the brand gradient ============ -->
   <section class="pagehead">
-    <div class="wrap pagehead__copy">
+    <div class="wrap pagehead__copy copyrule">
       <p class="eyebrow rise" style="--d:0ms">About AME</p>
       <h1 class="rise" style="--d:70ms">Additive manufacturing is revolutionizing how products are produced.</h1>
       <p class="pagehead__lead rise" style="--d:140ms">The AME team has unparalleled experience in additive manufacturing, engineering design and working alongside leaders in the aerospace industry.</p>
     </div>
     <div class="pagehead__stage">
+      <div class="layers" aria-hidden="true" data-parallax>
+        <span class="layers__s layers__s--1"></span>
+        <span class="layers__s layers__s--2"></span>
+        <span class="layers__s layers__s--3"></span>
+        <span class="layers__s layers__z"></span>
+      </div>
       <div class="wrap pagehead__media rise" style="--d:200ms">
         <figure class="shot shot--cine">
           <img src="assets/img/amebuilding-1.jpg" alt="The AME building in Huntsville, Alabama, with the company sign over the front entrance" width="2390" height="1792" fetchpriority="high" decoding="async" style="object-position: 50% 58%">
@@ -89,7 +96,44 @@
   <!-- ============ FACTS : display stats ============ -->
   <section class="section platform" id="facts">
     <div class="wrap">
-      <h2 class="platform__h reveal">Largest Selective Laser Manufacturing process in the&nbsp;region.</h2>
+      <div class="platform__top">
+        <h2 class="platform__h reveal">Largest Selective Laser Manufacturing process in the&nbsp;region.</h2>
+        <figure class="vol reveal" data-parallax aria-hidden="true">
+          <svg viewBox="0 0 380 300" xmlns="http://www.w3.org/2000/svg" focusable="false">
+            <defs>
+              <pattern id="vol-hatch" patternUnits="userSpaceOnUse" width="8" height="8">
+                <rect class="vol__hatch-bg" width="8" height="8"/>
+                <rect class="vol__hatch-ln" y="7" width="8" height="1"/>
+              </pattern>
+            </defs>
+            <g class="vol__hidden">
+              <line x1="220" y1="160" x2="107.4" y2="225"/>
+              <line x1="220" y1="160" x2="332.6" y2="225"/>
+              <line x1="220" y1="160" x2="220" y2="10"/>
+            </g>
+            <g transform="translate(107.4 225) skewY(30)"><rect class="vol__face" x="0" y="-150" width="112.6" height="150"/></g>
+            <g transform="translate(220 290) skewY(-30)"><rect class="vol__face vol__face--r" x="0" y="-150" width="112.6" height="150"/></g>
+            <g class="vol__edges">
+              <polygon points="107.4,225 220,290 332.6,225 332.6,75 220,10 107.4,75"/>
+              <line x1="220" y1="140" x2="107.4" y2="75"/>
+              <line x1="220" y1="140" x2="332.6" y2="75"/>
+              <line x1="220" y1="140" x2="220" y2="290"/>
+            </g>
+            <g class="vol__plane">
+              <polygon points="107.4,225 220,290 332.6,225 220,160"/>
+              <line x1="107.4" y1="225" x2="54" y2="225"/>
+              <circle cx="107.4" cy="225" r="2.5"/>
+              <text x="104" y="219" text-anchor="end">CURRENT LAYER</text>
+            </g>
+            <g class="vol__dim">
+              <text transform="rotate(30 163.7 257.5)" x="163.7" y="272" text-anchor="middle">400 mm</text>
+              <text transform="rotate(-30 276.3 257.5)" x="276.3" y="272" text-anchor="middle">400 mm</text>
+              <text transform="rotate(90 347 150)" x="347" y="150" text-anchor="middle">400 mm</text>
+            </g>
+          </svg>
+          <figcaption>Build volume, 400 mm on a side. One layer at a time.</figcaption>
+        </figure>
+      </div>
       <dl class="stats">
         <div class="stat reveal">
           <dt>Build envelope</dt>
@@ -134,6 +178,7 @@
   <!-- ============ WHAT WE PRODUCE ============ -->
   <section class="section" id="produce" style="padding-top: 0">
     <div class="wrap">
+      <div class="scan scan--gap" aria-hidden="true" data-parallax></div>
       <header class="sechead reveal">
         <h2>With 35 years of combined experience in additive, our team knows what works.</h2>
         <p>And we&rsquo;ve built some impressive stuff. We can produce:</p>
@@ -158,13 +203,13 @@
       </div>
 
       <div class="pgrid">
-        <figure class="shot shot--sq reveal">
+        <figure class="shot shot--sq shot--laser reveal">
           <img src="assets/img/sample2.jpg" alt="Sectioned metal printed assembly standing on the shop floor" width="4032" height="3024" loading="lazy" decoding="async" style="object-position: 45% 50%">
         </figure>
-        <figure class="shot shot--sq reveal">
+        <figure class="shot shot--sq shot--laser reveal">
           <img src="assets/img/sample4.jpg" alt="Metal printed sculptural part showing the as built surface texture" width="4032" height="3024" loading="lazy" decoding="async" style="object-position: 40% 50%">
         </figure>
-        <figure class="shot shot--sq reveal">
+        <figure class="shot shot--sq shot--laser reveal">
           <img src="assets/img/sample7.jpg" alt="Sectioned metal printed part revealing tall internal cooling channels" width="4032" height="3024" loading="lazy" decoding="async">
         </figure>
       </div>
@@ -173,8 +218,15 @@
 
   <!-- ============ CTA : dark band, metallic headline ============ -->
   <section class="cta band" aria-labelledby="cta-h">
+    <div class="layers" aria-hidden="true" data-parallax>
+      <span class="layers__s layers__s--1"></span>
+      <span class="layers__s layers__s--2"></span>
+      <span class="layers__s layers__s--3"></span>
+      <span class="layers__s layers__z"></span>
+    </div>
+    <span class="hatch" aria-hidden="true" data-parallax></span>
     <div class="wrap cta__grid">
-      <div class="reveal">
+      <div class="cta__copy copyrule reveal">
         <p class="eyebrow">Request a quote</p>
         <h2 class="metal" id="cta-h">Trust AME to make it happen.</h2>
         <p>When you are looking for built-to-order parts, send the model and the material. An engineer reads it, not a portal.</p>

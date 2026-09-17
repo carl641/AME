@@ -26,7 +26,7 @@
 
 <div id="top-sentinel" aria-hidden="true"></div>
 
-<header class="nav" id="nav">
+<header class="nav" id="nav" data-parallax="scroll">
   <div class="nav__in">
     <a class="brand" href="index.html" aria-label="Additive Manufacturing and Engineering, home">
       <span class="brand__logo"><img src="assets/img/ameLogo.png" alt="" width="788" height="446"></span>
@@ -41,6 +41,7 @@
     </nav>
 
     <div class="nav__end">
+      <span class="nav__z" id="z-readout" aria-hidden="true" hidden>Z 000.00 mm</span>
       <button class="iconbtn" id="theme-toggle" type="button" aria-label="Switch color theme">
         <span class="material-symbols-outlined" aria-hidden="true">contrast</span>
       </button>
@@ -56,12 +57,18 @@
 
   <!-- ============ PAGE HEADER : the map hangs over the brand gradient ============ -->
   <section class="pagehead">
-    <div class="wrap pagehead__copy">
+    <div class="wrap pagehead__copy copyrule">
       <p class="eyebrow rise" style="--d:0ms">Contact</p>
       <h1 class="rise" style="--d:70ms">Let&rsquo;s make it happen.</h1>
       <p class="pagehead__lead rise" style="--d:140ms">Send the model and the material. If it can be built, we will tell you what it costs and how long it takes.</p>
     </div>
     <div class="pagehead__stage">
+      <div class="layers" aria-hidden="true" data-parallax>
+        <span class="layers__s layers__s--1"></span>
+        <span class="layers__s layers__s--2"></span>
+        <span class="layers__s layers__s--3"></span>
+        <span class="layers__s layers__z"></span>
+      </div>
       <div class="wrap pagehead__media rise" style="--d:200ms">
         <figure class="map">
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3277.1136903777106!2d-86.6677787!3d34.7779131!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x886269838ebe0051%3A0x4663d6b72fb9e66a!2sAME%2C%20Inc.!5e0!3m2!1sen!2sus!4v1789654890102!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Map showing AME, Inc. at 128 Hall Bryant Cir NW, Huntsville, Alabama"></iframe>

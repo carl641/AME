@@ -26,7 +26,7 @@
 
 <div id="top-sentinel" aria-hidden="true"></div>
 
-<header class="nav" id="nav">
+<header class="nav" id="nav" data-parallax="scroll">
   <div class="nav__in">
     <a class="brand" href="index.html" aria-label="Additive Manufacturing and Engineering, home">
       <span class="brand__logo"><img src="assets/img/ameLogo.png" alt="" width="788" height="446"></span>
@@ -41,6 +41,7 @@
     </nav>
 
     <div class="nav__end">
+      <span class="nav__z" id="z-readout" aria-hidden="true" hidden>Z 000.00 mm</span>
       <button class="iconbtn" id="theme-toggle" type="button" aria-label="Switch color theme">
         <span class="material-symbols-outlined" aria-hidden="true">contrast</span>
       </button>
@@ -56,13 +57,19 @@
 
   <!-- ============ PAGE HEADER ============ -->
   <section class="pagehead">
-    <div class="wrap pagehead__copy">
+    <div class="wrap pagehead__copy copyrule">
       <p class="eyebrow rise" style="--d:0ms">Services</p>
       <h1 class="rise" style="--d:70ms">Advanced manufacturing techniques and capabilities</h1>
       <p class="pagehead__lead rise" style="--d:140ms">For aerospace, defense, energy and manufacturing.</p>
       <p class="rise" style="--d:200ms">Metal additive manufacturing will breathe life into your most ambitious design ideas. At AME, we&rsquo;ve pioneered innovative techniques and we&rsquo;re known industry-wide as a reliable service provider producing intricate metal parts, prototypes and models. Our laser powder bed fusion systems create incredible engineering works every day.</p>
     </div>
     <div class="pagehead__stage">
+      <div class="layers" aria-hidden="true" data-parallax>
+        <span class="layers__s layers__s--1"></span>
+        <span class="layers__s layers__s--2"></span>
+        <span class="layers__s layers__s--3"></span>
+        <span class="layers__s layers__z"></span>
+      </div>
       <div class="wrap pagehead__media rise" style="--d:260ms">
         <figure class="shot shot--cine">
           <img src="assets/img/printer-1.jpg" alt="EOS M400 laser powder bed fusion machine on the AME shop floor" width="2390" height="1792" fetchpriority="high" decoding="async" style="object-position: 50% 55%">
@@ -81,7 +88,7 @@
 
       <div class="svcs">
         <article class="svc reveal">
-          <figure class="shot">
+          <figure class="shot shot--laser">
             <img src="assets/img/sample5.jpg" alt="Printed housings, brackets and a manifold laid out on the bench" width="4032" height="3024" loading="lazy" decoding="async">
           </figure>
           <div class="svc__body">
@@ -92,7 +99,7 @@
         </article>
 
         <article class="svc reveal">
-          <figure class="shot">
+          <figure class="shot shot--laser">
             <img src="assets/img/sample6.jpg" alt="Sectioned block showing internal passages printed in one piece" width="4032" height="3024" loading="lazy" decoding="async">
           </figure>
           <div class="svc__body">
@@ -103,7 +110,7 @@
         </article>
 
         <article class="svc reveal">
-          <figure class="shot">
+          <figure class="shot shot--laser">
             <img src="assets/img/printer-2.jpg" alt="The EOS M400 on the AME floor, status light lit green during a build" width="2390" height="1792" loading="lazy" decoding="async" style="object-position: 70% 50%">
           </figure>
           <div class="svc__body">
@@ -136,8 +143,15 @@
 
   <!-- ============ CTA : dark band, metallic headline ============ -->
   <section class="cta band" aria-labelledby="cta-h">
+    <div class="layers" aria-hidden="true" data-parallax>
+      <span class="layers__s layers__s--1"></span>
+      <span class="layers__s layers__s--2"></span>
+      <span class="layers__s layers__s--3"></span>
+      <span class="layers__s layers__z"></span>
+    </div>
+    <span class="hatch" aria-hidden="true" data-parallax></span>
     <div class="wrap cta__grid">
-      <div class="reveal">
+      <div class="cta__copy copyrule reveal">
         <p class="eyebrow">Request a quote</p>
         <h2 class="metal" id="cta-h">Bring your CAD files. Let&rsquo;s make it happen.</h2>
         <p>Send the model and the material. If it can be built, we will tell you what it costs and how long it takes.</p>
