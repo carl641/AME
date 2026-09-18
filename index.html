@@ -36,8 +36,32 @@
 
     <nav class="nav__links" id="nav-links" aria-label="Primary">
       <a href="index.html" aria-current="page">Home</a>
+      <div class="nav__group" id="nav-group">
+        <a href="services.html">Services</a>
+        <button class="nav__more" id="nav-more" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Show all services">
+          <span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
+        </button>
+        <div class="nav__menu" id="nav-menu">
+          <div class="nav__col">
+            <p class="nav__k">Services</p>
+            <a href="metal-3d-printing-service.html">Metal 3D printing service</a>
+            <a href="metal-additive-manufacturing.html">Metal additive manufacturing</a>
+            <a href="laser-powder-bed-fusion.html">Laser powder bed fusion</a>
+            <a href="metal-3d-printing-cost.html">Cost and pricing</a>
+          </div>
+          <div class="nav__col">
+            <p class="nav__k">Materials</p>
+            <a href="inconel-718-3d-printing.html">Inconel 718</a>
+            <a href="grcop-42-3d-printing.html">GRCop-42</a>
+          </div>
+          <div class="nav__col">
+            <p class="nav__k">Guides</p>
+            <a href="fdm-vs-metal-3d-printing.html">FDM vs metal</a>
+            <a href="metal-3d-printing-huntsville-al.html">Huntsville, AL</a>
+          </div>
+        </div>
+      </div>
       <a href="about.html">About</a>
-      <a href="services.html">Services</a>
       <a href="contact.html">Contact</a>
     </nav>
 
@@ -116,6 +140,7 @@
           <div class="cell__body">
             <h3>Laser powder bed fusion</h3>
             <p>Full melt metal printing on an EOS M400, the largest commercial additive platform running in Alabama. Fine features and internal passages that no cutter can reach.</p>
+            <a class="textlink" href="laser-powder-bed-fusion.html">How the process works</a>
           </div>
         </article>
 
@@ -227,17 +252,19 @@
             <li>Creep resistant</li>
             <li>Weldable</li>
           </ul>
+          <a class="textlink" href="inconel-718-3d-printing.html">Inconel 718 3D printing</a>
         </article>
 
         <article class="mat reveal">
           <p class="mat__code">GRCop-42</p>
           <h3>GRCop-42</h3>
-          <p class="mat__body">A copper chromium niobium alloy developed by NASA. It moves heat like copper while holding strength past 600&nbsp;&deg;C, which is why it lines regeneratively cooled combustion chambers.</p>
+          <p class="mat__body">A copper chromium niobium alloy developed by NASA. It moves heat like copper while holding strength past 700&nbsp;&deg;C, which is why it lines regeneratively cooled combustion chambers.</p>
           <ul class="tags">
             <li>High thermal conductivity</li>
-            <li>Strength above 600 &deg;C</li>
+            <li>Strength above 700 &deg;C</li>
             <li>NASA developed</li>
           </ul>
+          <a class="textlink" href="grcop-42-3d-printing.html">GRCop-42 3D printing</a>
         </article>
       </div>
     </div>
@@ -315,7 +342,7 @@
       </header>
 
       <ol class="steps">
-        <li class="step reveal"><h3>Quote</h3><p>Send a model and a material. You get pricing and an honest read on whether the geometry will build.</p></li>
+        <li class="step reveal"><h3>Quote</h3><p>Send a model and a material. You get pricing and an honest read on whether the geometry will build. <a href="metal-3d-printing-cost.html">What drives the price.</a></p></li>
         <li class="step reveal"><h3>Review</h3><p>We flag overhangs, trapped powder and thin walls that will not survive, then propose the fix.</p></li>
         <li class="step reveal"><h3>Build</h3><p>Fused layer by layer on the M400, monitored through the run.</p></li>
         <li class="step reveal"><h3>Finish</h3><p>Stress relief, support removal and surface work to your callout.</p></li>
@@ -339,6 +366,25 @@
       <figure class="shot shot--tall reveal">
         <img src="assets/img/warehousefloor-1.jpg" alt="The AME shop floor, with finished parts on a bench and the EOS machine at the far wall" width="2390" height="1792" loading="lazy" decoding="async" style="object-position: 42% 50%">
       </figure>
+    </div>
+  </section>
+
+  <!-- ============ GO DEEPER : the service, material and guide pages ============ -->
+  <section class="section" id="deeper" style="padding-top: 0">
+    <div class="wrap">
+      <div class="scan scan--gap" aria-hidden="true" data-parallax></div>
+      <header class="sechead reveal">
+        <h2>Go deeper.</h2>
+        <p>What the service includes, how the process works, what the alloys do, and what a part costs.</p>
+      </header>
+      <div class="more">
+        <a class="reveal" href="metal-3d-printing-service.html"><span class="k">Service</span><h3>Metal 3D printing service</h3><p>What the job includes, the specifications, and how to choose a shop.</p></a>
+        <a class="reveal" href="laser-powder-bed-fusion.html"><span class="k">Process</span><h3>Laser powder bed fusion</h3><p>How the machine works, the design rules, and LPBF next to powder metallurgy.</p></a>
+        <a class="reveal" href="metal-3d-printing-cost.html"><span class="k">Pricing</span><h3>Metal 3D printing cost</h3><p>Six cost drivers, typical ranges, and how to bring the number down.</p></a>
+        <a class="reveal" href="metal-additive-manufacturing.html"><span class="k">Primer</span><h3>Metal additive manufacturing</h3><p>The process families, the standards, and where LPBF fits.</p></a>
+        <a class="reveal" href="fdm-vs-metal-3d-printing.html"><span class="k">Guide</span><h3>FDM vs metal 3D printing</h3><p>When plastic is enough, and when the part has to be metal.</p></a>
+        <a class="reveal" href="metal-3d-printing-huntsville-al.html"><span class="k">Location</span><h3>Metal 3D printing in Huntsville, AL</h3><p>Next to Redstone Arsenal and Marshall. Visit the shop.</p></a>
+      </div>
     </div>
   </section>
 
@@ -395,10 +441,24 @@
       <p>Metal laser powder bed fusion in Inconel 718 and GRCop-42. HUBZone and Small Disadvantaged Business certified, Huntsville, Alabama.</p>
     </div>
 
-    <nav class="foot__links" aria-label="Footer">
+    <nav class="foot__links" aria-label="Services">
+      <p class="foot__k">Services</p>
+      <a href="metal-3d-printing-service.html">Metal 3D printing service</a>
+      <a href="metal-additive-manufacturing.html">Metal additive manufacturing</a>
+      <a href="laser-powder-bed-fusion.html">Laser powder bed fusion</a>
+      <a href="metal-3d-printing-cost.html">Metal 3D printing cost</a>
+      <a href="fdm-vs-metal-3d-printing.html">FDM vs metal 3D printing</a>
+    </nav>
+
+    <nav class="foot__links" aria-label="Materials and company">
+      <p class="foot__k">Materials</p>
+      <a href="inconel-718-3d-printing.html">Inconel 718</a>
+      <a href="grcop-42-3d-printing.html">GRCop-42</a>
+      <p class="foot__k">Company</p>
       <a href="index.html" aria-current="page">Home</a>
       <a href="about.html">About</a>
       <a href="services.html">Services</a>
+      <a href="metal-3d-printing-huntsville-al.html">Huntsville, AL</a>
       <a href="contact.html">Contact</a>
       <a href="contact.html#quote">Request a quote</a>
     </nav>

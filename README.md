@@ -6,14 +6,25 @@ HUBZone certified metal LPBF shop in Huntsville, Alabama.
 Static HTML, CSS and vanilla JS. No build step, no framework, no dependencies.
 
 ```
-index.html                 home
-about.html                 about
-services.html              services
-contact.html               contact: map, phone, address and the quote form
-assets/css/styles.css      tokens, layout, motion
-assets/js/main.js          theme, nav, reveals, gallery, form
-assets/img/                photography and the logo (see below)
-tools/build-single-file.js bundles the home page into dist/preview.html
+index.html                             home
+about.html                             about
+services.html                          services hub, links to every page below
+contact.html                           contact: map, phone, address and the quote form
+
+metal-3d-printing-service.html         service page: what the job includes, specs, choosing a shop
+metal-additive-manufacturing.html      primer: process families, standards, where LPBF fits
+laser-powder-bed-fusion.html           process page: how the machine works, design rules, LPBF vs PM
+inconel-718-3d-printing.html           material page: composition, properties, heat treatment
+grcop-42-3d-printing.html              material page: NASA copper alloy, properties, comparisons
+metal-3d-printing-cost.html            pricing guide: cost drivers, ranges, how to cut the number
+fdm-vs-metal-3d-printing.html          guide: FDM explained, when the part has to be metal
+metal-3d-printing-huntsville-al.html   location page: the shop, the local ecosystem, service area
+
+sitemap.xml, robots.txt                for search engines
+assets/css/styles.css                  tokens, layout, motion, landing page components
+assets/js/main.js                      theme, nav and dropdown, reveals, gallery, form
+assets/img/                            photography and the logo (see below)
+tools/build-single-file.js             bundles the home page into dist/preview.html
 ```
 
 Open any page directly, or serve the folder:
@@ -45,9 +56,42 @@ the footer shows the full lockup.
 ## Pages
 
 Every page shares the same header and footer markup. The nav is
-Home, About, Services, Contact, and each page marks its own link with
-`aria-current="page"`. "Request a quote" everywhere points at
-`contact.html#quote`.
+Home, Services (with a dropdown of the service, material and guide pages),
+About, Contact, and each page marks its own link with `aria-current="page"`.
+"Request a quote" everywhere points at `contact.html#quote`.
+
+The footer carries every page in three columns, so each landing page is
+linked from every other page.
+
+### Landing pages and the keywords they target
+
+The eight landing pages were built from the Moz keyword list for the site.
+Each one targets one cluster; the home page keeps the brand and "Huntsville"
+terms it already ranks for.
+
+| Page | Primary keyword | Also targets |
+| --- | --- | --- |
+| `metal-3d-printing-service.html` | metal 3d printing service | metal 3d printing companies, industrial metal 3d printing, industrial 3D printing, rapid manufacturing 3D printing |
+| `metal-additive-manufacturing.html` | metal additive manufacturing | additive manufacturing for metals, additive manufacture |
+| `laser-powder-bed-fusion.html` | powder bed fusion 3D printing | powder metal 3d printing, powder metallurgy 3d printing, SLM, DMLS |
+| `inconel-718-3d-printing.html` | inconel 718 | inconel 718 3d printing, inconel 3d printing |
+| `grcop-42-3d-printing.html` | grcop 42 | GRCop-42 3D printing, NASA copper alloy |
+| `metal-3d-printing-cost.html` | metal 3d printing price | metal 3d printing cost |
+| `fdm-vs-metal-3d-printing.html` | fused deposition modeling | fused deposition modeling 3D printing |
+| `metal-3d-printing-huntsville-al.html` | metal 3D printing Huntsville AL | Huntsville additive manufacture, metal 3D printing Alabama, Madison County |
+
+AME does not offer FDM, so the FDM page is an honest comparison guide that
+says so and routes the reader to the metal pages, rather than a fake service
+page.
+
+Each landing page has its own title, meta description, canonical, Open Graph
+tags, breadcrumbs, a JSON-LD graph (LocalBusiness, Service, BreadcrumbList,
+WebPage, FAQPage) and an FAQ. They share the header, footer, call to action
+band and build motifs with the rest of the site.
+
+The pages were generated from one script so the shared markup is identical,
+but they are committed as plain HTML and can be edited directly like any
+other page.
 
 The old site's URLs (`/about/`, `/services/`, `/contact/`) now map to
 `about.html`, `services.html` and `contact.html`. Add redirects for the old
@@ -67,7 +111,13 @@ size (up to 4032 x 3024, about 600 to 850 KB each). Everything below the fold is
 lazy loaded, but a resize pass to around 1600 px wide would cut the home page
 by several megabytes. `assets/img/README.md` lists where each file is used.
 
-**3. The selected work photo.** The home page feature about the GRCop-42 fuel
+**3. Material figures.** The Inconel 718 and GRCop-42 pages quote typical
+published values (ASTM F3055 minimums, NASA characterisation data, common
+handbook figures). Each table carries an HTML comment asking for a check
+against the powder supplier data sheet and the program specification before
+the page goes live.
+
+**4. The selected work photo.** The home page feature about the GRCop-42 fuel
 injector currently shows `sample8.jpg`, a copper part with helical channels.
 Swap in a photo of the injector itself if one exists.
 

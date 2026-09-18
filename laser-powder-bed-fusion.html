@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laser Powder Bed Fusion | Powder Metal 3D Printing at AME</title>
+<meta name="description" content="How laser powder bed fusion works, from powder to heat treatment. Full density powder metal 3D printing in Inconel 718 and GRCop-42, plus the design rules.">
+<link rel="canonical" href="https://addmaneng.com/laser-powder-bed-fusion.html">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://addmaneng.com/laser-powder-bed-fusion.html">
+<meta property="og:title" content="Laser Powder Bed Fusion | Additive Manufacturing &amp; Engineering, Inc.">
+<meta property="og:description" content="A 1 kW laser melts metal powder 40 microns at a time, under argon, on a 400 mm platform. How it works and what it does well.">
+<meta property="og:image" content="https://addmaneng.com/assets/img/printer-2.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<div id="top-sentinel" aria-hidden="true"></div>
+
+<header class="nav" id="nav" data-parallax="scroll">
+  <div class="nav__in">
+    <a class="brand" href="index.html" aria-label="Additive Manufacturing and Engineering, home">
+      <span class="brand__logo"><img src="assets/img/ameLogo.png" alt="" width="788" height="446"></span>
+      <span class="brand__full">Additive Manufacturing<br>&amp; Engineering, Inc.</span>
+    </a>
+
+    <nav class="nav__links" id="nav-links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <div class="nav__group" id="nav-group">
+        <a href="services.html" class="is-within">Services</a>
+        <button class="nav__more" id="nav-more" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Show all services">
+          <span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
+        </button>
+        <div class="nav__menu" id="nav-menu">
+          <div class="nav__col">
+            <p class="nav__k">Services</p>
+            <a href="metal-3d-printing-service.html">Metal 3D printing service</a>
+            <a href="metal-additive-manufacturing.html">Metal additive manufacturing</a>
+            <a href="laser-powder-bed-fusion.html" aria-current="page">Laser powder bed fusion</a>
+            <a href="metal-3d-printing-cost.html">Cost and pricing</a>
+          </div>
+          <div class="nav__col">
+            <p class="nav__k">Materials</p>
+            <a href="inconel-718-3d-printing.html">Inconel 718</a>
+            <a href="grcop-42-3d-printing.html">GRCop-42</a>
+          </div>
+          <div class="nav__col">
+            <p class="nav__k">Guides</p>
+            <a href="fdm-vs-metal-3d-printing.html">FDM vs metal</a>
+            <a href="metal-3d-printing-huntsville-al.html">Huntsville, AL</a>
+          </div>
+        </div>
+      </div>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="nav__end">
+      <span class="nav__z" id="z-readout" aria-hidden="true" hidden>Z 000.00 mm</span>
+      <button class="iconbtn" id="theme-toggle" type="button" aria-label="Switch color theme">
+        <span class="material-symbols-outlined" aria-hidden="true">contrast</span>
+      </button>
+      <a class="btn btn--primary btn--sm nav__cta" href="contact.html#quote">Request a quote</a>
+      <button class="iconbtn nav__burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ PAGE HEADER ============ -->
+  <section class="pagehead">
+    <div class="wrap pagehead__copy copyrule">
+      <div class="rise" style="--d:0ms"><nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li aria-current="page">Laser powder bed fusion</li></ol></nav></div>
+      <h1 class="rise" style="--d:70ms">Laser powder bed fusion. Powder metal 3D printing at full density.</h1>
+      <p class="pagehead__lead rise" style="--d:140ms">A 1 kilowatt laser melts metal powder 40 microns at a time, under argon, on an EOS M 400 with a 400 mm cube envelope. Here is how the process works, what it does well, and where it sits next to powder metallurgy.</p>
+      <p class="rise" style="--d:200ms">Powder bed fusion is the process behind almost every metal 3D printed part that flies. It is what we run at AME, and it is the only process we run, which is why we know it well.</p>
+    </div>
+    <div class="pagehead__stage">
+      <div class="layers" aria-hidden="true" data-parallax>
+        <span class="layers__s layers__s--1"></span>
+        <span class="layers__s layers__s--2"></span>
+        <span class="layers__s layers__s--3"></span>
+        <span class="layers__s layers__z"></span>
+      </div>
+      <div class="wrap pagehead__media rise" style="--d:260ms">
+        <figure class="shot shot--cine">
+          <img src="assets/img/printer-2.jpg" alt="The EOS M 400 laser powder bed fusion machine on the AME floor, status light lit green during a build" width="2390" height="1792" fetchpriority="high" decoding="async" style="object-position: 70% 50%">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STATS ============ -->
+  <section class="section platform" id="platform">
+    <div class="wrap">
+      <dl class="stats">
+        <div class="stat reveal"><dt>Layer thickness</dt><dd><span class="num">40</span><span class="unit">microns, typical</span></dd></div>
+        <div class="stat reveal"><dt>Laser power</dt><dd><span class="num">1</span><span class="unit">kW ytterbium fibre</span></dd></div>
+        <div class="stat reveal"><dt>Scan speed</dt><dd><span class="num">7</span><span class="unit">metres per second, max</span></dd></div>
+        <div class="stat reveal"><dt>As built density</dt><dd><span class="num">99.5<sup>+</sup></span><span class="unit">percent of wrought</span></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ ARTICLE ============ -->
+  <section class="section" id="detail">
+    <div class="wrap article">
+      <div class="prose reveal">
+        <h2>How laser powder bed fusion works.</h2>
+        <ol>
+          <li><strong>A layer of powder is spread.</strong> A recoater draws a layer of spherical, gas atomised metal powder across the build plate. On our machine a layer is typically 40 microns, about half the width of a human hair.</li>
+          <li><strong>The laser melts the cross section.</strong> A 1 kilowatt ytterbium fibre laser, focused to a spot around 90 microns across, scans the slice of the part at up to 7 metres per second. The powder melts completely and fuses to the layer beneath. This is a full melt, which is why the parts are dense.</li>
+          <li><strong>The plate drops one layer.</strong> The build platform lowers by one layer thickness, fresh powder is spread, and the next slice is melted. The scan pattern rotates 67 degrees between layers so that stresses do not line up.</li>
+          <li><strong>Repeat, for hours or days.</strong> A 400 mm tall build is ten thousand layers. The chamber stays flooded with argon throughout so the molten metal never sees oxygen.</li>
+          <li><strong>Cool, unpack, cut, treat.</strong> When the build finishes the plate cools under argon, loose powder is recovered and sieved for reuse, and the plate goes to stress relief before the parts are cut off it. Supports come off, and the parts go on to HIP, heat treatment, machining and finishing as the drawing requires.</li>
+        </ol>
+
+        <h2>LPBF, SLM, DMLS: one process, several names.</h2>
+        <p>Laser powder bed fusion is the name in ISO/ASTM 52900, written PBF-LB/M for metal. Selective laser melting (SLM) and direct metal laser sintering (DMLS) are older trade names for the same thing; DMLS is the EOS term and appears on our machine. Despite the word sintering, DMLS on a modern machine melts the powder fully. If a supplier quotes you SLM, DMLS or LPBF they are describing the same process.</p>
+
+        <h2>Is this powder metallurgy?</h2>
+        <p>Yes and no, and the difference matters when you compare quotes. Powder metallurgy traditionally means pressing metal powder in a die and sintering it in a furnace, or injecting a powder and binder mix into a mould (metal injection moulding) and sintering that. Both start with powder, both end with a part that has shrunk in the furnace and kept some porosity.</p>
+        <p>Laser powder bed fusion starts with the same kind of powder and skips the sintering. The laser melts each layer into the last, so the part is fully dense when it leaves the machine, has not shrunk, and does not need a die or a mould. Binder jetting and bound metal filament are the additive processes that keep the sinter step, which is why their parts are cheaper per piece and weaker per gram. When a specification calls for powder metal 3D printing, ask which side of that line the supplier is on.</p>
+
+        <h2>What LPBF does well.</h2>
+        <ul>
+          <li>Internal channels and passages that follow the shape of the part, printed closed and leak tight.</li>
+          <li>Thin walls to 0.5 mm, fine lattices and features a cutter cannot reach.</li>
+          <li>Assemblies consolidated into one part with no brazed or welded joints.</li>
+          <li>Alloys that are hard to machine, like <a href="inconel-718-3d-printing.html">Inconel 718</a>, or hard to cast, like <a href="grcop-42-3d-printing.html">GRCop-42</a>.</li>
+          <li>One part through pilot volumes with no tooling and no change to the process between them.</li>
+        </ul>
+
+        <h2>Design rules that keep a build honest.</h2>
+        <ul>
+          <li><strong>Overhangs.</strong> Surfaces that lean more than about 45 degrees from vertical need supports or a redesign. Chamfers and teardrop holes are self supporting.</li>
+          <li><strong>Holes and channels.</strong> Horizontal round holes self support up to roughly 8 mm in diameter; above that, teardrop or diamond them. Internal channels need an exit so powder can be removed.</li>
+          <li><strong>Walls.</strong> 0.5 mm is achievable; 1 mm is comfortable for a structural wall. Keep thickness consistent to avoid distortion.</li>
+          <li><strong>Orientation.</strong> Height drives build time; downward facing surfaces are rougher; critical faces should point up or sit vertical.</li>
+          <li><strong>Machining stock.</strong> Add 0.5 to 1 mm on faces that will be finished to a tight tolerance.</li>
+          <li><strong>Residual stress.</strong> Every build is stress relieved on the plate before parts are cut free. Design for it: avoid long thin unsupported spans and abrupt section changes.</li>
+        </ul>
+        <p>We check all of this before quoting. If a feature will not build, you hear about it with a proposed fix, not after the plate is unpacked.</p>
+
+        <h2>The machine.</h2>
+        <p>AME runs an EOS M 400: a single 1 kW ytterbium fibre laser over a 400 &times; 400 &times; 400 mm build envelope, under argon, with a scan speed of up to 7 m/s and a focus diameter of about 90 microns. It is the largest commercial metal additive platform in Alabama, and the same machine class the propulsion primes use. One machine, two alloys, run every week, is how you get to know a process.</p>
+      </div>
+      <aside class="aside reveal">
+        <div class="aside__box">
+          <h3>Send the model.</h3>
+          <p>An engineer reads it, prices it and tells you if it builds.</p>
+          <a class="btn btn--primary btn--sm" href="contact.html#quote">Request a quote</a>
+          <a class="aside__phone" href="tel:+12565271737">(256) 527-1737</a>
+        </div>
+        <div class="aside__box">
+          <h3>EOS M 400</h3>
+          <dl class="facts"><div><dt>Laser</dt><dd>1 kW Yb fibre</dd></div><div><dt>Envelope</dt><dd>400 &times; 400 &times; 400 mm</dd></div><div><dt>Layer</dt><dd>40 &micro;m typical</dd></div><div><dt>Scan speed</dt><dd>Up to 7 m/s</dd></div><div><dt>Spot</dt><dd>About 90 &micro;m</dd></div><div><dt>Atmosphere</dt><dd>Argon</dd></div></dl>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ COMPARE ============ -->
+  <section class="section" id="compare" style="padding-top: 0">
+    <div class="wrap">
+      <div class="scan scan--gap" aria-hidden="true" data-parallax></div>
+      <header class="sechead reveal">
+        <h2>Powder bed fusion next to the sintered processes.</h2>
+        <p>All four start with metal powder. Only one finishes without a furnace.</p>
+      </header>
+      <div class="reveal">
+<div class="tablewrap"><table class="spec spec--wide">
+  <thead><tr><th scope="col">Process</th><th scope="col">How the powder is joined</th><th scope="col">Density</th><th scope="col">Shrinkage</th><th scope="col">Resolution</th><th scope="col">Typical use</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">Laser powder bed fusion</th><td>Full melt by laser, layer by layer</td><td>99.5%+ as built, 99.9%+ after HIP</td><td>None; near net shape</td><td>0.3 to 0.5 mm features, 40 &micro;m layers</td><td>Flight hardware, complex channels, superalloys and copper</td></tr>
+    <tr><th scope="row">Binder jetting</th><td>Glued green part, sintered in a furnace</td><td>About 96 to 99% after sintering</td><td>15 to 20% linear</td><td>About 0.5 mm, limited by sintering</td><td>Small parts in volume, steels</td></tr>
+    <tr><th scope="row">Metal injection moulding</th><td>Moulded green part, debound and sintered</td><td>About 96 to 99%</td><td>15 to 20% linear</td><td>Fine, but needs a mould</td><td>High volume small parts</td></tr>
+    <tr><th scope="row">Press and sinter</th><td>Compacted in a die, sintered</td><td>About 85 to 95%</td><td>A few percent</td><td>Coarse, simple shapes</td><td>Bushings, gears, structural PM parts</td></tr>
+  </tbody>
+</table></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GALLERY ============ -->
+  <section class="section" id="produce" style="padding-top: 0">
+    <div class="wrap">
+      <div class="pgrid">
+        <figure class="shot shot--sq shot--laser reveal"><img src="assets/img/sample3.jpg" alt="Rows of copper alloy pins still attached to the build plate, dusted with powder" width="4032" height="3024" loading="lazy" decoding="async"></figure>
+        <figure class="shot shot--sq shot--laser reveal"><img src="assets/img/sample4.jpg" alt="Metal printed part showing the as built layered surface texture" width="4032" height="3024" loading="lazy" decoding="async" style="object-position: 40% 50%"></figure>
+        <figure class="shot shot--sq shot--laser reveal"><img src="assets/img/sample6.jpg" alt="Sectioned block showing internal passages printed in one piece" width="4032" height="3024" loading="lazy" decoding="async"></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section" id="faq">
+    <div class="wrap">
+      <header class="sechead reveal">
+        <h2>Questions we get asked.</h2>
+      </header>
+      <div class="faq reveal">
+        <details>
+          <summary>What is laser powder bed fusion?</summary>
+          <div><p>A metal 3D printing process in which a laser melts thin layers of metal powder, one on top of the last, until a solid part is built up on a plate. It runs under argon, uses layers around 40 microns thick, and produces fully dense parts in alloys such as Inconel 718 and GRCop-42.</p></div>
+        </details>
+        <details>
+          <summary>Is LPBF the same as SLM and DMLS?</summary>
+          <div><p>Yes. Selective laser melting (SLM) and direct metal laser sintering (DMLS) are trade names for laser powder bed fusion. ISO/ASTM 52900 calls it PBF-LB/M. The word sintering in DMLS is historical; the powder is fully melted.</p></div>
+        </details>
+        <details>
+          <summary>What is the difference between powder bed fusion and binder jetting?</summary>
+          <div><p>Powder bed fusion melts the powder with a laser and the part is dense when it leaves the machine. Binder jetting glues the powder with a liquid binder and then sinters the part in a furnace, where it shrinks 15 to 20 percent and keeps some porosity. Fusion costs more per part and gives better properties.</p></div>
+        </details>
+        <details>
+          <summary>How accurate is powder bed fusion?</summary>
+          <div><p>Typically &plusmn;0.1 to 0.2 mm on small features as built, with a length dependent allowance on larger dimensions. Features that need tighter tolerance are printed with stock and machined.</p></div>
+        </details>
+        <details>
+          <summary>What metals can be used in LPBF?</summary>
+          <div><p>Nickel superalloys, copper alloys, titanium, aluminium, stainless and tool steels, cobalt chrome and refractory metals have all been qualified. AME runs Inconel 718 and GRCop-42 and can add alloys for programs with the volume.</p></div>
+        </details>
+        <details>
+          <summary>How strong are LPBF parts?</summary>
+          <div><p>After heat treatment, comparable to wrought. ASTM F3055 sets minimum tensile properties for powder bed fusion <a href="inconel-718-3d-printing.html">Inconel 718</a> that HIP&rsquo;d and aged parts meet. As built density is above 99.5 percent.</p></div>
+        </details>
+        <details>
+          <summary>Does LPBF need support structures?</summary>
+          <div><p>Yes, for surfaces that overhang more than about 45 degrees from vertical. Supports anchor the part to the plate, resist distortion and conduct heat away from the melt. They are removed after stress relief. Good design keeps them to a minimum.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RELATED ============ -->
+  <section class="section" id="more">
+    <div class="wrap">
+      <header class="sechead reveal">
+        <h2>Go deeper.</h2>
+      </header>
+      <div class="more">
+        <a class="reveal" href="metal-3d-printing-service.html">
+          <span class="k">Service</span>
+          <h3>Metal 3D printing service</h3>
+          <p>What the job includes, the specifications, and how to choose a shop.</p>
+        </a>
+        <a class="reveal" href="metal-additive-manufacturing.html">
+          <span class="k">Primer</span>
+          <h3>Metal additive manufacturing</h3>
+          <p>The process families, the standards, and where laser powder bed fusion fits.</p>
+        </a>
+        <a class="reveal" href="inconel-718-3d-printing.html">
+          <span class="k">Material</span>
+          <h3>Inconel 718 3D printing</h3>
+          <p>Composition, properties, heat treatment and ASTM F3055.</p>
+        </a>
+        <a class="reveal" href="grcop-42-3d-printing.html">
+          <span class="k">Material</span>
+          <h3>GRCop-42 3D printing</h3>
+          <p>NASA’s copper alloy for chamber liners and injectors.</p>
+        </a>
+        <a class="reveal" href="metal-3d-printing-cost.html">
+          <span class="k">Pricing</span>
+          <h3>Metal 3D printing cost</h3>
+          <p>Six cost drivers, typical ranges, and how to bring the number down.</p>
+        </a>
+        <a class="reveal" href="fdm-vs-metal-3d-printing.html">
+          <span class="k">Guide</span>
+          <h3>FDM vs metal 3D printing</h3>
+          <p>When plastic is enough, and when the part has to be metal.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta band" aria-labelledby="cta-h">
+    <div class="layers" aria-hidden="true" data-parallax>
+      <span class="layers__s layers__s--1"></span>
+      <span class="layers__s layers__s--2"></span>
+      <span class="layers__s layers__s--3"></span>
+      <span class="layers__s layers__z"></span>
+    </div>
+    <span class="hatch" aria-hidden="true" data-parallax></span>
+    <div class="wrap cta__grid">
+      <div class="cta__copy copyrule reveal">
+        <p class="eyebrow">Request a quote</p>
+        <h2 class="metal" id="cta-h">Send the model. We&rsquo;ll tell you if it builds.</h2>
+        <p>Orientation, supports and an honest read on the geometry, from an engineer who runs the machine.</p>
+      </div>
+      <div class="cta__act reveal">
+        <a class="cta__phone" href="tel:+12565271737"><span>Call the shop</span>(256) 527-1737</a>
+        <a class="btn btn--primary" href="contact.html#quote">Request a quote</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://addmaneng.com/#business",
+      "name": "Additive Manufacturing & Engineering, Inc.",
+      "alternateName": "AME",
+      "url": "https://addmaneng.com/",
+      "logo": "https://addmaneng.com/assets/img/ameLogo.png",
+      "image": "https://addmaneng.com/assets/img/amebuilding-1.jpg",
+      "telephone": "+1-256-527-1737",
+      "foundingDate": "2018",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "128 Hall Bryant Cir NW",
+        "addressLocality": "Huntsville",
+        "addressRegion": "AL",
+        "postalCode": "35806",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 34.7779131,
+        "longitude": -86.6677787
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://addmaneng.com/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://addmaneng.com/services.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Laser powder bed fusion",
+          "item": "https://addmaneng.com/laser-powder-bed-fusion.html"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://addmaneng.com/laser-powder-bed-fusion.html",
+      "url": "https://addmaneng.com/laser-powder-bed-fusion.html",
+      "name": "Laser Powder Bed Fusion | Powder Metal 3D Printing at AME",
+      "description": "How laser powder bed fusion works, from powder to heat treatment. Full density powder metal 3D printing in Inconel 718 and GRCop-42, plus the design rules.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "url": "https://addmaneng.com/",
+        "name": "Additive Manufacturing & Engineering, Inc."
+      },
+      "about": {
+        "@id": "https://addmaneng.com/#business"
+      },
+      "primaryImageOfPage": "https://addmaneng.com/assets/img/printer-2.jpg"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://addmaneng.com/laser-powder-bed-fusion.html#service",
+      "name": "Laser powder bed fusion metal 3D printing",
+      "serviceType": "Laser powder bed fusion (LPBF, SLM, DMLS)",
+      "provider": {
+        "@id": "https://addmaneng.com/#business"
+      },
+      "url": "https://addmaneng.com/laser-powder-bed-fusion.html",
+      "description": "How laser powder bed fusion works, from powder to heat treatment. Full density powder metal 3D printing in Inconel 718 and GRCop-42, plus the design rules.",
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Huntsville",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Alabama"
+          }
+        },
+        {
+          "@type": "State",
+          "name": "Alabama"
+        },
+        {
+          "@type": "Country",
+          "name": "United States"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is laser powder bed fusion?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A metal 3D printing process in which a laser melts thin layers of metal powder, one on top of the last, until a solid part is built up on a plate. It runs under argon, uses layers around 40 microns thick, and produces fully dense parts in alloys such as Inconel 718 and GRCop-42."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is LPBF the same as SLM and DMLS?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Selective laser melting (SLM) and direct metal laser sintering (DMLS) are trade names for laser powder bed fusion. ISO/ASTM 52900 calls it PBF-LB/M. The word sintering in DMLS is historical; the powder is fully melted."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between powder bed fusion and binder jetting?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Powder bed fusion melts the powder with a laser and the part is dense when it leaves the machine. Binder jetting glues the powder with a liquid binder and then sinters the part in a furnace, where it shrinks 15 to 20 percent and keeps some porosity. Fusion costs more per part and gives better properties."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How accurate is powder bed fusion?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Typically &plusmn;0.1 to 0.2 mm on small features as built, with a length dependent allowance on larger dimensions. Features that need tighter tolerance are printed with stock and machined."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What metals can be used in LPBF?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nickel superalloys, copper alloys, titanium, aluminium, stainless and tool steels, cobalt chrome and refractory metals have all been qualified. AME runs Inconel 718 and GRCop-42 and can add alloys for programs with the volume."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How strong are LPBF parts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "After heat treatment, comparable to wrought. ASTM F3055 sets minimum tensile properties for powder bed fusion Inconel 718 that HIP’d and aged parts meet. As built density is above 99.5 percent."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does LPBF need support structures?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, for surfaces that overhang more than about 45 degrees from vertical. Supports anchor the part to the plate, resist distortion and conduct heat away from the melt. They are removed after stress relief. Good design keeps them to a minimum."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<footer class="foot">
+  <div class="wrap foot__grid">
+    <div class="foot__brand">
+      <div class="foot__logo"><img src="assets/img/ameLogo.png" alt="AME, Additive Manufacturing Engineering" width="788" height="446" loading="lazy"></div>
+      <p>Metal laser powder bed fusion in Inconel 718 and GRCop-42. HUBZone and Small Disadvantaged Business certified, Huntsville, Alabama.</p>
+    </div>
+
+    <nav class="foot__links" aria-label="Services">
+      <p class="foot__k">Services</p>
+      <a href="metal-3d-printing-service.html">Metal 3D printing service</a>
+      <a href="metal-additive-manufacturing.html">Metal additive manufacturing</a>
+      <a href="laser-powder-bed-fusion.html" aria-current="page">Laser powder bed fusion</a>
+      <a href="metal-3d-printing-cost.html">Metal 3D printing cost</a>
+      <a href="fdm-vs-metal-3d-printing.html">FDM vs metal 3D printing</a>
+    </nav>
+
+    <nav class="foot__links" aria-label="Materials and company">
+      <p class="foot__k">Materials</p>
+      <a href="inconel-718-3d-printing.html">Inconel 718</a>
+      <a href="grcop-42-3d-printing.html">GRCop-42</a>
+      <p class="foot__k">Company</p>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="metal-3d-printing-huntsville-al.html">Huntsville, AL</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html#quote">Request a quote</a>
+    </nav>
+
+    <address class="foot__addr">
+      128 Hall Bryant Cir NW<br>
+      Huntsville, AL 35806<br>
+      <a href="tel:+12565271737">(256) 527-1737</a>
+    </address>
+  </div>
+  <div class="wrap foot__bar">
+    <p>&copy; <span id="yr">2026</span> Additive Manufacturing &amp; Engineering, Inc.</p>
+    <p>HUBZone certified. Small Disadvantaged Business.</p>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
