@@ -35,8 +35,32 @@
 
     <nav class="nav__links" id="nav-links" aria-label="Primary">
       <a href="index.html">Home</a>
+      <div class="nav__group" id="nav-group">
+        <a href="services.html" aria-current="page">Services</a>
+        <button class="nav__more" id="nav-more" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Show all services">
+          <span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
+        </button>
+        <div class="nav__menu" id="nav-menu">
+          <div class="nav__col">
+            <p class="nav__k">Services</p>
+            <a href="metal-3d-printing-service.html">Metal 3D printing service</a>
+            <a href="metal-additive-manufacturing.html">Metal additive manufacturing</a>
+            <a href="laser-powder-bed-fusion.html">Laser powder bed fusion</a>
+            <a href="metal-3d-printing-cost.html">Cost and pricing</a>
+          </div>
+          <div class="nav__col">
+            <p class="nav__k">Materials</p>
+            <a href="inconel-718-3d-printing.html">Inconel 718</a>
+            <a href="grcop-42-3d-printing.html">GRCop-42</a>
+          </div>
+          <div class="nav__col">
+            <p class="nav__k">Guides</p>
+            <a href="fdm-vs-metal-3d-printing.html">FDM vs metal</a>
+            <a href="metal-3d-printing-huntsville-al.html">Huntsville, AL</a>
+          </div>
+        </div>
+      </div>
       <a href="about.html">About</a>
-      <a href="services.html" aria-current="page">Services</a>
       <a href="contact.html">Contact</a>
     </nav>
 
@@ -95,6 +119,7 @@
             <p class="svc__n">01</p>
             <h3>Additive Manufacturing</h3>
             <p>The experience of AME&rsquo;s engineers combined with advanced 3D metal additive manufacturing machines and processes give us the leading edge when it comes to bringing your designs to life. Bring your CAD files and let&rsquo;s make it happen.</p>
+            <a class="textlink" href="metal-additive-manufacturing.html">Metal additive manufacturing explained</a>
           </div>
         </article>
 
@@ -106,6 +131,7 @@
             <p class="svc__n">02</p>
             <h3>3D Metal Printing</h3>
             <p>This additive layer technology uses a laser beam to melt ultra thin layers of powdered metal on top of each other, allowing for advanced internal designs and features.</p>
+            <a class="textlink" href="metal-3d-printing-service.html">The metal 3D printing service</a>
           </div>
         </article>
 
@@ -115,10 +141,32 @@
           </figure>
           <div class="svc__body">
             <p class="svc__n">03</p>
-            <h3>Processes &amp; Materials</h3>
-            <p>We utilize an EOS M400 to produce our metal 3D printed parts using the Selective Laser Manufacturing (SLM) process. Our parts are produced from Inconel 718 and GRCop-42 alloys. Other metals available on request when volume requirements are met.</p>
+            <h3 id="materials">Processes &amp; Materials</h3>
+            <p>We utilize an EOS M400 to produce our metal 3D printed parts using the laser powder bed fusion (SLM) process. Our parts are produced from <a href="inconel-718-3d-printing.html">Inconel 718</a> and <a href="grcop-42-3d-printing.html">GRCop-42</a> alloys. Other metals available on request when volume requirements are met.</p>
+            <a class="textlink" href="laser-powder-bed-fusion.html">How laser powder bed fusion works</a>
           </div>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ IN DEPTH : one page per service, material and guide ============ -->
+  <section class="section" id="depth" style="padding-top: 0">
+    <div class="wrap">
+      <div class="scan scan--gap" aria-hidden="true" data-parallax></div>
+      <header class="sechead reveal">
+        <h2>Services in depth.</h2>
+        <p>One page for each thing people ask us about, written by the people who run the machine.</p>
+      </header>
+      <div class="more">
+        <a class="reveal" href="metal-3d-printing-service.html"><span class="k">Service</span><h3>Metal 3D printing service</h3><p>What the job includes, the specifications, and how to choose a shop.</p></a>
+        <a class="reveal" href="metal-additive-manufacturing.html"><span class="k">Primer</span><h3>Metal additive manufacturing</h3><p>The process families, the standards, and where LPBF fits.</p></a>
+        <a class="reveal" href="laser-powder-bed-fusion.html"><span class="k">Process</span><h3>Laser powder bed fusion</h3><p>How the machine works, the design rules, and LPBF next to powder metallurgy.</p></a>
+        <a class="reveal" href="inconel-718-3d-printing.html"><span class="k">Material</span><h3>Inconel 718 3D printing</h3><p>Composition, properties, heat treatment and ASTM F3055.</p></a>
+        <a class="reveal" href="grcop-42-3d-printing.html"><span class="k">Material</span><h3>GRCop-42 3D printing</h3><p>NASA&rsquo;s copper alloy for chamber liners and injectors.</p></a>
+        <a class="reveal" href="metal-3d-printing-cost.html"><span class="k">Pricing</span><h3>Metal 3D printing cost</h3><p>Six cost drivers, typical ranges, and how to bring the number down.</p></a>
+        <a class="reveal" href="fdm-vs-metal-3d-printing.html"><span class="k">Guide</span><h3>FDM vs metal 3D printing</h3><p>When plastic is enough, and when the part has to be metal.</p></a>
+        <a class="reveal" href="metal-3d-printing-huntsville-al.html"><span class="k">Location</span><h3>Metal 3D printing in Huntsville, AL</h3><p>Next to Redstone Arsenal and Marshall. Visit the shop.</p></a>
       </div>
     </div>
   </section>
@@ -171,10 +219,24 @@
       <p>Metal laser powder bed fusion in Inconel 718 and GRCop-42. HUBZone and Small Disadvantaged Business certified, Huntsville, Alabama.</p>
     </div>
 
-    <nav class="foot__links" aria-label="Footer">
+    <nav class="foot__links" aria-label="Services">
+      <p class="foot__k">Services</p>
+      <a href="metal-3d-printing-service.html">Metal 3D printing service</a>
+      <a href="metal-additive-manufacturing.html">Metal additive manufacturing</a>
+      <a href="laser-powder-bed-fusion.html">Laser powder bed fusion</a>
+      <a href="metal-3d-printing-cost.html">Metal 3D printing cost</a>
+      <a href="fdm-vs-metal-3d-printing.html">FDM vs metal 3D printing</a>
+    </nav>
+
+    <nav class="foot__links" aria-label="Materials and company">
+      <p class="foot__k">Materials</p>
+      <a href="inconel-718-3d-printing.html">Inconel 718</a>
+      <a href="grcop-42-3d-printing.html">GRCop-42</a>
+      <p class="foot__k">Company</p>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="services.html" aria-current="page">Services</a>
+      <a href="metal-3d-printing-huntsville-al.html">Huntsville, AL</a>
       <a href="contact.html">Contact</a>
       <a href="contact.html#quote">Request a quote</a>
     </nav>

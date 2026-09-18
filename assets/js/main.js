@@ -76,6 +76,37 @@
     });
   }
 
+  /* ---------- services dropdown ----------
+     Hover and focus open it in CSS. The chevron button toggles it
+     for touch and keyboard; Escape and an outside click close it.
+     On phones the menu is flattened into the main list, so the
+     button is hidden and this does nothing. */
+  var group = document.getElementById('nav-group');
+  var more = document.getElementById('nav-more');
+  if (group && more) {
+    var setMore = function (open) {
+      group.classList.toggle('is-open', open);
+      more.setAttribute('aria-expanded', String(open));
+    };
+    more.addEventListener('click', function (e) {
+      e.preventDefault();
+      setMore(more.getAttribute('aria-expanded') !== 'true');
+    });
+    document.addEventListener('click', function (e) {
+      if (!group.contains(e.target)) setMore(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      setMore(false);
+      /* :focus-within keeps the menu open while focus is inside it,
+         so Escape also drops focus to genuinely close it. */
+      if (group.contains(document.activeElement)) document.activeElement.blur();
+    });
+    group.addEventListener('focusout', function (e) {
+      if (!group.contains(e.relatedTarget)) setMore(false);
+    });
+  }
+
   /* ---------- image slots ----------
      Each .shot carries the path to its intended photo. We preload
      it; only on a successful load do we swap the placeholder for

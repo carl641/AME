@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metal Additive Manufacturing Explained | AME, Huntsville AL</title>
+<meta name="description" content="Metal additive manufacturing explained: process families, standards, where laser powder bed fusion fits, and how AME builds flight hardware in Huntsville, AL.">
+<link rel="canonical" href="https://addmaneng.com/metal-additive-manufacturing.html">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://addmaneng.com/metal-additive-manufacturing.html">
+<meta property="og:title" content="Metal Additive Manufacturing | Additive Manufacturing &amp; Engineering, Inc.">
+<meta property="og:description" content="What additive manufacturing for metals is, which processes exist, where laser powder bed fusion fits, and how a Huntsville shop builds NASA hardware with it.">
+<meta property="og:image" content="https://addmaneng.com/assets/img/sample5.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<div id="top-sentinel" aria-hidden="true"></div>
+
+<header class="nav" id="nav" data-parallax="scroll">
+  <div class="nav__in">
+    <a class="brand" href="index.html" aria-label="Additive Manufacturing and Engineering, home">
+      <span class="brand__logo"><img src="assets/img/ameLogo.png" alt="" width="788" height="446"></span>
+      <span class="brand__full">Additive Manufacturing<br>&amp; Engineering, Inc.</span>
+    </a>
+
+    <nav class="nav__links" id="nav-links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <div class="nav__group" id="nav-group">
+        <a href="services.html" class="is-within">Services</a>
+        <button class="nav__more" id="nav-more" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Show all services">
+          <span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
+        </button>
+        <div class="nav__menu" id="nav-menu">
+          <div class="nav__col">
+            <p class="nav__k">Services</p>
+            <a href="metal-3d-printing-service.html">Metal 3D printing service</a>
+            <a href="metal-additive-manufacturing.html" aria-current="page">Metal additive manufacturing</a>
+            <a href="laser-powder-bed-fusion.html">Laser powder bed fusion</a>
+            <a href="metal-3d-printing-cost.html">Cost and pricing</a>
+          </div>
+          <div class="nav__col">
+            <p class="nav__k">Materials</p>
+            <a href="inconel-718-3d-printing.html">Inconel 718</a>
+            <a href="grcop-42-3d-printing.html">GRCop-42</a>
+          </div>
+          <div class="nav__col">
+            <p class="nav__k">Guides</p>
+            <a href="fdm-vs-metal-3d-printing.html">FDM vs metal</a>
+            <a href="metal-3d-printing-huntsville-al.html">Huntsville, AL</a>
+          </div>
+        </div>
+      </div>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="nav__end">
+      <span class="nav__z" id="z-readout" aria-hidden="true" hidden>Z 000.00 mm</span>
+      <button class="iconbtn" id="theme-toggle" type="button" aria-label="Switch color theme">
+        <span class="material-symbols-outlined" aria-hidden="true">contrast</span>
+      </button>
+      <a class="btn btn--primary btn--sm nav__cta" href="contact.html#quote">Request a quote</a>
+      <button class="iconbtn nav__burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ PAGE HEADER ============ -->
+  <section class="pagehead">
+    <div class="wrap pagehead__copy copyrule">
+      <div class="rise" style="--d:0ms"><nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li aria-current="page">Metal additive manufacturing</li></ol></nav></div>
+      <h1 class="rise" style="--d:70ms">Metal additive manufacturing, from powder to flight part.</h1>
+      <p class="pagehead__lead rise" style="--d:140ms">What additive manufacturing for metals actually is, which processes exist, where laser powder bed fusion fits, and how a small shop in Huntsville uses it to build hardware for NASA programs.</p>
+      <p class="rise" style="--d:200ms">AME was incorporated in 2018 to do one thing: metal additive manufacturing for customers who need parts that conventional processes cannot make. This page is the primer we wish every first time customer had read before sending a file.</p>
+    </div>
+    <div class="pagehead__stage">
+      <div class="layers" aria-hidden="true" data-parallax>
+        <span class="layers__s layers__s--1"></span>
+        <span class="layers__s layers__s--2"></span>
+        <span class="layers__s layers__s--3"></span>
+        <span class="layers__s layers__z"></span>
+      </div>
+      <div class="wrap pagehead__media rise" style="--d:260ms">
+        <figure class="shot shot--cine">
+          <img src="assets/img/sample5.jpg" alt="Metal 3D printed housings, brackets and a manifold laid out on the bench at AME" width="4032" height="3024" fetchpriority="high" decoding="async" style="object-position: 50% 50%">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STATS ============ -->
+  <section class="section platform" id="platform">
+    <div class="wrap">
+      <dl class="stats">
+        <div class="stat reveal"><dt>Process categories</dt><dd><span class="num">7</span><span class="unit">in ISO/ASTM 52900</span></dd></div>
+        <div class="stat reveal"><dt>Used for metal</dt><dd><span class="num">5</span><span class="unit">in production today</span></dd></div>
+        <div class="stat reveal"><dt>We run</dt><dd><span class="num">1</span><span class="unit">laser powder bed fusion</span></dd></div>
+        <div class="stat reveal"><dt>Envelope</dt><dd><span class="num">400<sup>3</sup></span><span class="unit">mm cube</span></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ ARTICLE ============ -->
+  <section class="section" id="detail">
+    <div class="wrap article">
+      <div class="prose reveal">
+        <h2>What metal additive manufacturing is.</h2>
+        <p>Additive manufacturing is the industrial term for 3D printing. ISO/ASTM 52900 defines it as joining materials to make parts from 3D model data, usually layer upon layer, as opposed to subtractive manufacturing (machining) and formative manufacturing (casting, forging, moulding). Metal additive manufacturing applies that idea to engineering alloys: nickel superalloys, copper alloys, titanium, aluminium, steels.</p>
+        <p>The consequence is that geometry becomes almost free. Internal channels, lattices, thin walls and consolidated assemblies cost nothing extra to print, while they may be impossible to machine or cast. What you pay for instead is machine time, powder and post processing.</p>
+
+        <h2>The process families, and which one we run.</h2>
+        <p>The standard groups additive processes into seven categories. Five of them are used for metal in production today.</p>
+        <ul>
+          <li><strong>Powder bed fusion (PBF).</strong> A thin layer of powder is spread across a plate and a laser or electron beam melts the cross section of the part. Laser powder bed fusion (LPBF, also SLM or DMLS) is the most widely used metal process and the one AME runs. It gives the finest features, the best surface and near wrought density.</li>
+          <li><strong>Directed energy deposition (DED).</strong> Powder or wire is fed into a melt pool made by a laser, arc or electron beam. Fast and large, with coarse resolution; used for big structures, repairs and cladding.</li>
+          <li><strong>Binder jetting.</strong> A liquid binder glues powder into a green part which is then sintered. Cheap and fast per part, but parts shrink 15 to 20 percent in the furnace and finish below full density.</li>
+          <li><strong>Material extrusion with bound metal.</strong> Metal powder in a polymer binder is extruded like a plastic filament, then debound and sintered. Small parts, limited alloys, sintered density.</li>
+          <li><strong>Sheet lamination and cold spray.</strong> Processes that bond solid metal without melting it; useful for specific jobs, not for intricate geometry.</li>
+        </ul>
+        <p>We chose LPBF because the hardware our customers bring us is small enough to fit a 400 mm cube, complicated enough to need 40 micron layers and loaded hard enough to need full density. See <a href="laser-powder-bed-fusion.html">how laser powder bed fusion works</a> for the step by step.</p>
+
+        <h2>Why programs use it.</h2>
+        <ul>
+          <li><strong>Part consolidation.</strong> A brazed assembly of twenty pieces becomes one printed part with no joints to leak.</li>
+          <li><strong>Internal geometry.</strong> Cooling channels that follow the wall of a combustion chamber, manifolds with smooth swept passages, conformal cooling in tooling.</li>
+          <li><strong>No tooling.</strong> No patterns, moulds or dies. A design revision is a new file and the next build.</li>
+          <li><strong>Lead time.</strong> Weeks from CAD to a part in hand, including heat treatment, rather than the months a casting can take.</li>
+          <li><strong>Alloys that resist machining.</strong> Inconel 718 is notoriously hard on cutters. Printing near net shape and machining only the interfaces saves hours of spindle time.</li>
+        </ul>
+
+        <h2>Where it is honest to say no.</h2>
+        <p>Metal additive manufacturing is the wrong answer often enough that we say so. Simple geometry at volume is cheaper machined or cast. A part larger than the envelope has to be split or made another way. As built surfaces are rougher than machined ones, so sealing faces and bearing fits get finished afterwards. And every printed part carries residual stress until it is heat treated, which is a process step, not an option.</p>
+
+        <h2>Alloys.</h2>
+        <p>We qualify and run two alloys that propulsion programs fly: <a href="inconel-718-3d-printing.html">Inconel 718</a>, the nickel superalloy for hot structural hardware, and <a href="grcop-42-3d-printing.html">GRCop-42</a>, NASA&rsquo;s copper chromium niobium alloy for combustion chamber liners and anything else that has to move heat. Other alloys that run on the EOS M 400 platform can be brought on for programs with the volume to justify a dedicated powder lot.</p>
+
+        <h2>Standards and qualification.</h2>
+        <p>Flight hardware needs more than a good looking part. The specifications below are the ones customers ask us about most.</p>
+        <ul>
+          <li><strong>ISO/ASTM 52900</strong>, the terminology standard that defines the process categories.</li>
+          <li><strong>ASTM F3055</strong>, the specification for Inconel 718 (UNS N07718) made by powder bed fusion, including heat treatment classes and minimum tensile properties.</li>
+          <li><strong>ASTM F3303</strong>, the practice for metal powder bed fusion to meet critical applications: process control, parameter locking and monitoring.</li>
+          <li><strong>AMS 7003</strong>, the SAE process specification for laser powder bed fusion.</li>
+          <li><strong>NASA-STD-6030</strong>, additive manufacturing requirements for spaceflight systems, which sets out the qualified metallurgical process, part classification and witness testing.</li>
+        </ul>
+        <p>We hold parameters, powder lots and build records for every job, put witness coupons on the plate when the program calls for them, and coordinate HIP, heat treatment and testing with partners who work to the same standards.</p>
+
+        <h2>Metal additive manufacturing in Huntsville.</h2>
+        <p>Huntsville is one of the places where metal additive manufacturing grew up. Marshall Space Flight Center matured and hot fire tested the GRCop alloys, and the engine programs on and around Redstone Arsenal print combustion devices as routine practice. AME sits a few miles from both. Our chief engineer built a GRCop-42 fuel injector with NASA and Marshall that we showed at RAPID + TCT, and the team has 35 combined years in additive. <a href="metal-3d-printing-huntsville-al.html">More on the shop and where we serve.</a></p>
+      </div>
+      <aside class="aside reveal">
+        <div class="aside__box">
+          <h3>Start with a review.</h3>
+          <p>Send the model before the design is frozen. Ten minutes with an engineer is where the savings are.</p>
+          <a class="btn btn--primary btn--sm" href="contact.html#quote">Request a quote</a>
+          <a class="aside__phone" href="tel:+12565271737">(256) 527-1737</a>
+        </div>
+        <div class="aside__box">
+          <h3>What we run</h3>
+          <dl class="facts"><div><dt>Process</dt><dd>Laser powder bed fusion</dd></div><div><dt>Machine</dt><dd>EOS M 400</dd></div><div><dt>Envelope</dt><dd>400 mm cube</dd></div><div><dt>Alloys</dt><dd>Inconel 718, GRCop-42</dd></div><div><dt>Since</dt><dd>2018, Huntsville</dd></div></dl>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ TRIO ============ -->
+  <section class="section" id="produce" style="padding-top: 0">
+    <div class="wrap">
+      <div class="scan scan--gap" aria-hidden="true" data-parallax></div>
+      <header class="sechead reveal">
+        <h2>What comes off our plate.</h2>
+      </header>
+      <div class="trio">
+        <article class="cell cell--tint reveal">
+          <span class="material-symbols-outlined cell__icon" aria-hidden="true">architecture</span>
+          <h3>Models and prototypes</h3>
+          <p>Development hardware in the flight alloy, so the test article is the real thing.</p>
+        </article>
+        <article class="cell reveal">
+          <span class="material-symbols-outlined cell__icon" aria-hidden="true">conveyor_belt</span>
+          <h3>Pilot series production</h3>
+          <p>Repeat runs on locked parameters for aerospace, defense, medical and automotive programs.</p>
+        </article>
+        <article class="cell cell--grid reveal">
+          <span class="material-symbols-outlined cell__icon" aria-hidden="true">deployed_code</span>
+          <h3>Geometry nothing else makes</h3>
+          <p>Cooling channels, lattices, consolidated assemblies and thin walls that no cutter can reach.</p>
+        </article>
+      </div>
+      <div class="pgrid">
+        <figure class="shot shot--sq shot--laser reveal"><img src="assets/img/sample7.jpg" alt="Sectioned metal printed part revealing tall internal cooling channels" width="4032" height="3024" loading="lazy" decoding="async"></figure>
+        <figure class="shot shot--sq shot--laser reveal"><img src="assets/img/sample6.jpg" alt="Sectioned block showing internal passages printed in one piece" width="4032" height="3024" loading="lazy" decoding="async"></figure>
+        <figure class="shot shot--sq shot--laser reveal"><img src="assets/img/sample1.jpg" alt="Small copper lattice cylinder with an as built surface" width="4032" height="3024" loading="lazy" decoding="async"></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section" id="faq">
+    <div class="wrap">
+      <header class="sechead reveal">
+        <h2>Questions we get asked.</h2>
+      </header>
+      <div class="faq reveal">
+        <details>
+          <summary>Is additive manufacturing the same as 3D printing?</summary>
+          <div><p>Yes. Additive manufacturing is the term used in standards and in industry, 3D printing the everyday one. Metal additive manufacturing and metal 3D printing describe the same processes.</p></div>
+        </details>
+        <details>
+          <summary>How strong are metal additive parts?</summary>
+          <div><p>After heat treatment, laser powder bed fusion parts in <a href="inconel-718-3d-printing.html">Inconel 718</a> meet or exceed the minimum tensile properties of the wrought specifications. As built density is typically above 99.5 percent, and hot isostatic pressing closes what porosity remains.</p></div>
+        </details>
+        <details>
+          <summary>Which metals can be additively manufactured?</summary>
+          <div><p>Nickel superalloys (718, 625), copper alloys (GRCop-42, CuCrZr), titanium (Ti-6Al-4V), aluminium (AlSi10Mg), stainless and tool steels (316L, 17-4 PH), cobalt chrome and more. AME runs Inconel 718 and GRCop-42, and can add alloys for programs with the volume to justify a dedicated powder lot.</p></div>
+        </details>
+        <details>
+          <summary>How large a part can you make?</summary>
+          <div><p>Up to 400 &times; 400 &times; 400 mm in one piece on the EOS M 400. Larger assemblies are printed in sections and joined.</p></div>
+        </details>
+        <details>
+          <summary>Is metal additive manufacturing expensive?</summary>
+          <div><p>Per part, usually more than machining a simple shape and less than tooling up a casting for a few pieces. It wins on complex geometry, low volumes and speed. Our <a href="metal-3d-printing-cost.html">cost guide</a> explains what moves the number.</p></div>
+        </details>
+        <details>
+          <summary>Can additive parts be used for flight?</summary>
+          <div><p>Yes, with a qualified process and the testing the program requires. NASA-STD-6030 and the ASTM and AMS specifications define the path, and we build to it.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RELATED ============ -->
+  <section class="section" id="more">
+    <div class="wrap">
+      <header class="sechead reveal">
+        <h2>Go deeper.</h2>
+      </header>
+      <div class="more">
+        <a class="reveal" href="metal-3d-printing-service.html">
+          <span class="k">Service</span>
+          <h3>Metal 3D printing service</h3>
+          <p>What the job includes, the specifications, and how to choose a shop.</p>
+        </a>
+        <a class="reveal" href="laser-powder-bed-fusion.html">
+          <span class="k">Process</span>
+          <h3>Laser powder bed fusion</h3>
+          <p>How the machine works, the design rules, and LPBF next to powder metallurgy.</p>
+        </a>
+        <a class="reveal" href="inconel-718-3d-printing.html">
+          <span class="k">Material</span>
+          <h3>Inconel 718 3D printing</h3>
+          <p>Composition, properties, heat treatment and ASTM F3055.</p>
+        </a>
+        <a class="reveal" href="grcop-42-3d-printing.html">
+          <span class="k">Material</span>
+          <h3>GRCop-42 3D printing</h3>
+          <p>NASA’s copper alloy for chamber liners and injectors.</p>
+        </a>
+        <a class="reveal" href="metal-3d-printing-cost.html">
+          <span class="k">Pricing</span>
+          <h3>Metal 3D printing cost</h3>
+          <p>Six cost drivers, typical ranges, and how to bring the number down.</p>
+        </a>
+        <a class="reveal" href="metal-3d-printing-huntsville-al.html">
+          <span class="k">Location</span>
+          <h3>Metal 3D printing in Huntsville, AL</h3>
+          <p>Next to Redstone Arsenal and Marshall. Visit the shop.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta band" aria-labelledby="cta-h">
+    <div class="layers" aria-hidden="true" data-parallax>
+      <span class="layers__s layers__s--1"></span>
+      <span class="layers__s layers__s--2"></span>
+      <span class="layers__s layers__s--3"></span>
+      <span class="layers__s layers__z"></span>
+    </div>
+    <span class="hatch" aria-hidden="true" data-parallax></span>
+    <div class="wrap cta__grid">
+      <div class="cta__copy copyrule reveal">
+        <p class="eyebrow">Request a quote</p>
+        <h2 class="metal" id="cta-h">Bring the CAD file. Let&rsquo;s make it happen.</h2>
+        <p>Send the model and the material. If it can be built, we will tell you what it costs and how long it takes.</p>
+      </div>
+      <div class="cta__act reveal">
+        <a class="cta__phone" href="tel:+12565271737"><span>Call the shop</span>(256) 527-1737</a>
+        <a class="btn btn--primary" href="contact.html#quote">Request a quote</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://addmaneng.com/#business",
+      "name": "Additive Manufacturing & Engineering, Inc.",
+      "alternateName": "AME",
+      "url": "https://addmaneng.com/",
+      "logo": "https://addmaneng.com/assets/img/ameLogo.png",
+      "image": "https://addmaneng.com/assets/img/amebuilding-1.jpg",
+      "telephone": "+1-256-527-1737",
+      "foundingDate": "2018",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "128 Hall Bryant Cir NW",
+        "addressLocality": "Huntsville",
+        "addressRegion": "AL",
+        "postalCode": "35806",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 34.7779131,
+        "longitude": -86.6677787
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://addmaneng.com/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://addmaneng.com/services.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Metal additive manufacturing",
+          "item": "https://addmaneng.com/metal-additive-manufacturing.html"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://addmaneng.com/metal-additive-manufacturing.html",
+      "url": "https://addmaneng.com/metal-additive-manufacturing.html",
+      "name": "Metal Additive Manufacturing Explained | AME, Huntsville AL",
+      "description": "Metal additive manufacturing explained: process families, standards, where laser powder bed fusion fits, and how AME builds flight hardware in Huntsville, AL.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "url": "https://addmaneng.com/",
+        "name": "Additive Manufacturing & Engineering, Inc."
+      },
+      "about": {
+        "@id": "https://addmaneng.com/#business"
+      },
+      "primaryImageOfPage": "https://addmaneng.com/assets/img/sample5.jpg"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://addmaneng.com/metal-additive-manufacturing.html#service",
+      "name": "Metal additive manufacturing",
+      "serviceType": "Metal additive manufacturing (laser powder bed fusion)",
+      "provider": {
+        "@id": "https://addmaneng.com/#business"
+      },
+      "url": "https://addmaneng.com/metal-additive-manufacturing.html",
+      "description": "Metal additive manufacturing explained: process families, standards, where laser powder bed fusion fits, and how AME builds flight hardware in Huntsville, AL.",
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Huntsville",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Alabama"
+          }
+        },
+        {
+          "@type": "State",
+          "name": "Alabama"
+        },
+        {
+          "@type": "Country",
+          "name": "United States"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is additive manufacturing the same as 3D printing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Additive manufacturing is the term used in standards and in industry, 3D printing the everyday one. Metal additive manufacturing and metal 3D printing describe the same processes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How strong are metal additive parts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "After heat treatment, laser powder bed fusion parts in Inconel 718 meet or exceed the minimum tensile properties of the wrought specifications. As built density is typically above 99.5 percent, and hot isostatic pressing closes what porosity remains."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which metals can be additively manufactured?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nickel superalloys (718, 625), copper alloys (GRCop-42, CuCrZr), titanium (Ti-6Al-4V), aluminium (AlSi10Mg), stainless and tool steels (316L, 17-4 PH), cobalt chrome and more. AME runs Inconel 718 and GRCop-42, and can add alloys for programs with the volume to justify a dedicated powder lot."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How large a part can you make?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Up to 400 × 400 × 400 mm in one piece on the EOS M 400. Larger assemblies are printed in sections and joined."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is metal additive manufacturing expensive?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Per part, usually more than machining a simple shape and less than tooling up a casting for a few pieces. It wins on complex geometry, low volumes and speed. Our cost guide explains what moves the number."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can additive parts be used for flight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, with a qualified process and the testing the program requires. NASA-STD-6030 and the ASTM and AMS specifications define the path, and we build to it."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<footer class="foot">
+  <div class="wrap foot__grid">
+    <div class="foot__brand">
+      <div class="foot__logo"><img src="assets/img/ameLogo.png" alt="AME, Additive Manufacturing Engineering" width="788" height="446" loading="lazy"></div>
+      <p>Metal laser powder bed fusion in Inconel 718 and GRCop-42. HUBZone and Small Disadvantaged Business certified, Huntsville, Alabama.</p>
+    </div>
+
+    <nav class="foot__links" aria-label="Services">
+      <p class="foot__k">Services</p>
+      <a href="metal-3d-printing-service.html">Metal 3D printing service</a>
+      <a href="metal-additive-manufacturing.html" aria-current="page">Metal additive manufacturing</a>
+      <a href="laser-powder-bed-fusion.html">Laser powder bed fusion</a>
+      <a href="metal-3d-printing-cost.html">Metal 3D printing cost</a>
+      <a href="fdm-vs-metal-3d-printing.html">FDM vs metal 3D printing</a>
+    </nav>
+
+    <nav class="foot__links" aria-label="Materials and company">
+      <p class="foot__k">Materials</p>
+      <a href="inconel-718-3d-printing.html">Inconel 718</a>
+      <a href="grcop-42-3d-printing.html">GRCop-42</a>
+      <p class="foot__k">Company</p>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="metal-3d-printing-huntsville-al.html">Huntsville, AL</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html#quote">Request a quote</a>
+    </nav>
+
+    <address class="foot__addr">
+      128 Hall Bryant Cir NW<br>
+      Huntsville, AL 35806<br>
+      <a href="tel:+12565271737">(256) 527-1737</a>
+    </address>
+  </div>
+  <div class="wrap foot__bar">
+    <p>&copy; <span id="yr">2026</span> Additive Manufacturing &amp; Engineering, Inc.</p>
+    <p>HUBZone certified. Small Disadvantaged Business.</p>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
