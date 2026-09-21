@@ -132,15 +132,24 @@ animation by scroll position, so the look is identical.
 | --- | --- | --- |
 | `.layers` | Hero, call to action bands, inner page headers | Three sheets of teal layer lines at different spacings drift at different rates as you scroll, plus one lit layer with a glow. Parallax depth from the build stack. |
 | `.scan` | Between sections | A hairline divider with a laser spot that crosses the page while the line travels the viewport. |
-| `.nav::after` and `.nav__z` | Header | A teal build progress line along the foot of the header, and a Z height readout that climbs 0.02 mm per pixel scrolled. |
-| `.vol` | Platform stats, home and about | An isometric 400 mm build volume. The current layer plane rises through it and the built layers hatch in beneath as the figure scrolls through. Dimension labels on the edges. |
+| `.nav::after` and `.nav__z` | Header | A teal build progress line along the foot of the header, and a Z height readout that counts the layer level down through the 400 mm envelope, 400.00 mm at the top of the page to 000.00 at the bottom. |
+| `.vol` | Platform stats, home and about | An isometric 400 mm build volume packed with powder. The current layer plane sinks through it as the figure scrolls, the dust above it clears, and the part fused inside is uncovered from the top down, laser hairline sweeping the layer. Dimension labels on the edges. |
 | `.hatch` | Call to action bands | The scan strategy: stripes that turn 67 degrees, the rotation between one layer and the next, as the band scrolls. |
 | `.shot--laser` | Gallery, capability and service photos, about page grid | Hovering sweeps a teal laser line down the photo. |
 | `.platform` background | Platform stats | A faint powder bed dot grid. |
 
 All of it is `aria-hidden`. Under `prefers-reduced-motion` the timelines are
-never bound: the layer lines, plane and hatch sit at a static mid state, the
-progress line and readout are hidden.
+never bound: the layer lines, plane and hatch sit at a static mid state, half
+the bed still packed and half the part standing clear, and the progress line
+and readout are hidden.
+
+Inside `.vol`, powder and part alike are rectangles inside skewed groups, so a
+clip from the top in a face's own space cuts parallel to the layer plane: the
+powder is clipped away above the plane, the part is uncovered down to it. The
+plane travels the full 400 mm over the middle 15 to 85 percent of the figure's
+pass through the viewport, so both the packed bed and the bare part are on
+screen. It crosses the top of the part at 26.7 percent and the shoulder of its
+lower step at 43.
 
 ## Notes on the build
 

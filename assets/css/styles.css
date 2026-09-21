@@ -723,9 +723,9 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
 /* =============================================================
    Build motifs. Decoration drawn from the process itself: layer
    lines that drift at different rates as you scroll, a laser scan
-   between sections, the build volume filling one layer at a time,
-   the 67 degree hatch turn between layers, a laser pass over a
-   photo on hover. Each scroll coupled piece is a CSS animation
+   between sections, the build volume uncovering a part one layer at
+   a time, the 67 degree hatch turn between layers, a laser pass over
+   a photo on hover. Each scroll coupled piece is a CSS animation
    named px-*; the motion block below binds it to a scroll or view
    timeline, and main.js seeks the same animation in browsers
    without them. The static values here are what reduced motion
@@ -755,7 +755,7 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
   background: var(--accent);
   box-shadow: 0 0 14px 1px var(--accent);
   opacity: .5;
-  --t: 120px; --dir: -1;
+  --t: 120px; --dir: 1; /* down the page, with the layer plane */
 }
 .hero .layers {
   -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, .45), #000 55%);
@@ -799,18 +799,42 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
 }
 .shot--laser:hover::after { opacity: 1; }
 
-/* build volume: an isometric 400 mm cube. The current layer plane
-   rises through it and the built layers hatch in beneath. The two
-   side faces are rectangles inside skewed groups, so clipping them
-   from the top in their own space cuts parallel to the plane. */
+/* build volume: an isometric 400 mm cube packed with powder. The
+   current layer plane sinks through it as you scroll, the dust above
+   it clears, and the part fused inside is uncovered from the top
+   down. Every face, powder and part alike, is a rectangle inside a
+   skewed group, so clipping it from the top in its own space cuts
+   parallel to the plane. */
 .vol { margin: 0; width: 100%; max-width: 380px; justify-self: end; }
 .vol svg { display: block; width: 100%; height: auto; overflow: visible; }
 .vol__hidden line { stroke: var(--fg-3); stroke-width: 1; stroke-dasharray: 3 4; opacity: .45; }
 .vol__edges polygon, .vol__edges line { fill: none; stroke: var(--fg-3); stroke-width: 1; opacity: .8; }
-.vol__hatch-bg { fill: var(--accent); opacity: .12; }
-.vol__hatch-ln { fill: var(--accent); opacity: .6; }
-.vol__face { fill: url(#vol-hatch); clip-path: inset(50% 0 0 0); }
+.vol__hatch-bg { fill: color-mix(in srgb, var(--accent) 20%, var(--bg-2)); }
+.vol__hatch-ln { fill: color-mix(in srgb, var(--accent) 80%, var(--bg-2)); }
+.vol__dust-bg { fill: var(--accent); opacity: .07; }
+.vol__dust-pt { fill: var(--fg-3); opacity: .45; }
+
+/* powder: cut down from the top as the layer plane sinks */
+.vol__face { fill: url(#vol-powder); clip-path: inset(50% 0 0 0); }
 .vol__face--r { opacity: .7; }
+
+/* the part: uncovered from the top down, so the cut is on the bottom */
+.vol__solid {
+  fill: url(#vol-part);
+  stroke: var(--accent); stroke-width: 1;
+  clip-path: inset(0 0 83.3% 0);
+}
+.vol__solid--2 { clip-path: inset(0 0 0 0); }
+.vol__solid--r { fill-opacity: .82; }
+.vol__cap { fill: color-mix(in srgb, var(--accent) 45%, var(--bg-2)); stroke: var(--accent); stroke-width: 1; }
+
+/* the laser, sweeping the layer along one of the two hatch axes */
+.vol__laser {
+  stroke: var(--accent-2); stroke-width: 2;
+  filter: drop-shadow(0 0 5px var(--accent));
+  opacity: 0;
+}
+
 .vol__plane {
   transform: translateY(-75px);
   filter: drop-shadow(0 0 6px color-mix(in srgb, var(--accent) 55%, transparent));
@@ -853,9 +877,14 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
   .layers__s { animation-name: px-drift; }
   .scan::after { animation-name: px-scan; }
   .hatch { animation-name: px-hatch; }
-  .vol__plane { animation-name: px-rise; }
-  .vol__face { animation-name: px-build; }
-  .nav::after, .layers__s, .scan::after, .hatch, .vol__plane, .vol__face {
+  .vol__plane { animation-name: px-sink; }
+  .vol__face { animation-name: px-dust; }
+  .vol__solid--1 { animation-name: px-part-1; }
+  .vol__solid--2 { animation-name: px-part-2; }
+  .vol__cap--1 { animation-name: px-cap-1; }
+  .vol__cap--2 { animation-name: px-cap-2; }
+  .vol.in .vol__laser { animation: laser-sweep 2.8s linear infinite; }
+  .nav::after, .layers__s, .scan::after, .hatch, .vol__plane, .vol__face, .vol__solid, .vol__cap {
     animation-timing-function: linear;
     animation-fill-mode: both;
   }
@@ -863,11 +892,11 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
     .layers__s, .scan::after, .hatch { animation-timeline: view(); animation-duration: auto; }
     .nav::after { animation-timeline: scroll(root); animation-duration: auto; }
     .vol { view-timeline-name: --vol; }
-    .vol__plane, .vol__face { animation-timeline: --vol; animation-duration: auto; }
+    .vol__plane, .vol__face, .vol__solid, .vol__cap { animation-timeline: --vol; animation-duration: auto; }
   }
   @supports not (animation-timeline: view()) {
     /* paused at one second long; main.js seeks them by scroll position */
-    .nav::after, .layers__s, .scan::after, .hatch, .vol__plane, .vol__face { animation-duration: 1s; animation-play-state: paused; }
+    .nav::after, .layers__s, .scan::after, .hatch, .vol__plane, .vol__face, .vol__solid, .vol__cap { animation-duration: 1s; animation-play-state: paused; }
   }
 
   .shot--laser:hover::after { animation: laser-pass 1.6s linear infinite; }
@@ -880,8 +909,35 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
 }
 @keyframes px-scan { from { transform: translateX(-220px); } to { transform: translateX(100%); } }
 @keyframes px-hatch { from { transform: translateY(-50%) rotate(0deg); } to { transform: translateY(-50%) rotate(67deg); } }
-@keyframes px-rise { from { transform: translateY(0); } to { transform: translateY(-150px); } }
-@keyframes px-build { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
+/* The layer plane sinks the full 400 mm, top of the bed to the plate,
+   over the middle 15 to 85 percent of the figure's pass through the
+   viewport, so the packed bed and the bare part are both on screen.
+   In between it crosses the part: the top of the upper step at 26.7
+   percent, the shoulder of the lower one at 43, the plate at 85. */
+@keyframes px-sink {
+  0%, 15%    { transform: translateY(-150px); }
+  85%, 100%  { transform: translateY(0); }
+}
+@keyframes px-dust {
+  0%, 15%    { clip-path: inset(0 0 0 0); }
+  85%, 100%  { clip-path: inset(100% 0 0 0); }
+}
+@keyframes px-part-1 {
+  0%, 43%    { clip-path: inset(0 0 100% 0); }
+  85%, 100%  { clip-path: inset(0 0 0 0); }
+}
+@keyframes px-part-2 {
+  0%, 26.7%  { clip-path: inset(0 0 100% 0); }
+  43%, 100%  { clip-path: inset(0 0 0 0); }
+}
+@keyframes px-cap-1 { 0%, 41.9% { opacity: 0; } 44.1%, 100% { opacity: 1; } }
+@keyframes px-cap-2 { 0%, 25.6% { opacity: 0; } 27.8%, 100% { opacity: 1; } }
+@keyframes laser-sweep {
+  0%   { transform: translate(0, 0); opacity: 0; }
+  8%   { opacity: .95; }
+  92%  { opacity: .95; }
+  100% { transform: translate(112.6px, -65px); opacity: 0; }
+}
 @keyframes laser-pass { from { background-position: 0 0, 0 0; } to { background-position: 0 100%, 0 100%; } }
 
 @media (prefers-reduced-motion: reduce) {

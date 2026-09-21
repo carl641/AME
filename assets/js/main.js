@@ -231,8 +231,9 @@
      timeline where the browser has them. Elsewhere the same
      animations sit paused, one second long, and this seeks them:
      currentTime = progress * 1000. The Z readout in the header
-     always runs from here; it climbs 0.02 mm per pixel scrolled,
-     one 40 micron layer every two pixels. */
+     always runs from here; it counts the layer plane down through
+     the 400 mm envelope, 400.00 mm at the top of the page to 000.00
+     at the bottom. */
   var zOut = document.getElementById('z-readout');
   var native = !!(window.CSS && CSS.supports && CSS.supports('animation-timeline: view()'));
   var tracked = [];
@@ -266,7 +267,7 @@
       });
 
       if (zOut) {
-        var z = y * 0.02;
+        var z = 400 * (1 - pageP);
         zOut.textContent = 'Z ' + ('000' + z.toFixed(2)).slice(-6) + ' mm';
       }
     };

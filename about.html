@@ -65,7 +65,7 @@
     </nav>
 
     <div class="nav__end">
-      <span class="nav__z" id="z-readout" aria-hidden="true" hidden>Z 000.00 mm</span>
+      <span class="nav__z" id="z-readout" aria-hidden="true" hidden>Z 400.00 mm</span>
       <button class="iconbtn" id="theme-toggle" type="button" aria-label="Switch color theme">
         <span class="material-symbols-outlined" aria-hidden="true">contrast</span>
       </button>
@@ -125,7 +125,14 @@
         <figure class="vol reveal" data-parallax aria-hidden="true">
           <svg viewBox="0 0 380 300" xmlns="http://www.w3.org/2000/svg" focusable="false">
             <defs>
-              <pattern id="vol-hatch" patternUnits="userSpaceOnUse" width="8" height="8">
+              <!-- loose powder: dust still packed in the bed -->
+              <pattern id="vol-powder" patternUnits="userSpaceOnUse" width="7" height="7">
+                <rect class="vol__dust-bg" width="7" height="7"/>
+                <circle class="vol__dust-pt" cx="1.6" cy="1.6" r=".75"/>
+                <circle class="vol__dust-pt" cx="5.1" cy="4.6" r=".75"/>
+              </pattern>
+              <!-- fused metal: the layers the laser has already welded -->
+              <pattern id="vol-part" patternUnits="userSpaceOnUse" width="8" height="8">
                 <rect class="vol__hatch-bg" width="8" height="8"/>
                 <rect class="vol__hatch-ln" y="7" width="8" height="1"/>
               </pattern>
@@ -135,6 +142,7 @@
               <line x1="220" y1="160" x2="332.6" y2="225"/>
               <line x1="220" y1="160" x2="220" y2="10"/>
             </g>
+            <!-- powder left in the bed: everything under the current layer -->
             <g transform="translate(107.4 225) skewY(30)"><rect class="vol__face" x="0" y="-150" width="112.6" height="150"/></g>
             <g transform="translate(220 290) skewY(-30)"><rect class="vol__face vol__face--r" x="0" y="-150" width="112.6" height="150"/></g>
             <g class="vol__edges">
@@ -143,11 +151,27 @@
               <line x1="220" y1="140" x2="332.6" y2="75"/>
               <line x1="220" y1="140" x2="220" y2="290"/>
             </g>
+            <!-- current layer, sinking through the bed. The hairline is the
+                 laser scanning it; the part standing above it cuts the sweep
+                 off, the way the solid would. -->
             <g class="vol__plane">
               <polygon points="107.4,225 220,290 332.6,225 220,160"/>
+              <line class="vol__laser" x1="107.4" y1="225" x2="220" y2="290"/>
               <line x1="107.4" y1="225" x2="54" y2="225"/>
               <circle cx="107.4" cy="225" r="2.5"/>
               <text x="104" y="219" text-anchor="end">CURRENT LAYER</text>
+            </g>
+            <!-- the part uncovered out of it, painted low to high and over the
+                 plane, since everything above the plane is out of the dust.
+                 Each face is a rectangle inside a skewed group, so a cut from
+                 the top in its own space runs parallel to the layer plane. -->
+            <g class="vol__part">
+              <g transform="translate(163.7 225) skewY(30)"><rect class="vol__solid vol__solid--1" x="0" y="-90" width="56.3" height="90"/></g>
+              <g transform="translate(220 257.5) skewY(-30)"><rect class="vol__solid vol__solid--1 vol__solid--r" x="0" y="-90" width="56.3" height="90"/></g>
+              <polygon class="vol__cap vol__cap--1" points="163.7,135 220,167.5 276.3,135 220,102.5"/>
+              <g transform="translate(191.85 135) skewY(30)"><rect class="vol__solid vol__solid--2" x="0" y="-35" width="28.15" height="35"/></g>
+              <g transform="translate(220 151.25) skewY(-30)"><rect class="vol__solid vol__solid--2 vol__solid--r" x="0" y="-35" width="28.15" height="35"/></g>
+              <polygon class="vol__cap vol__cap--2" points="191.85,100 220,116.25 248.15,100 220,83.75"/>
             </g>
             <g class="vol__dim">
               <text transform="rotate(30 163.7 257.5)" x="163.7" y="272" text-anchor="middle">400 mm</text>
