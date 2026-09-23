@@ -20,6 +20,10 @@ metal-3d-printing-cost.html            pricing guide: cost drivers, ranges, how 
 fdm-vs-metal-3d-printing.html          guide: FDM explained, when the part has to be metal
 metal-3d-printing-huntsville-al.html   location page: the shop, the local ecosystem, service area
 
+blog.html                              blog index, newest post first
+huntsville-universities-metal-3d-printing-talent.html
+                                       post: Huntsville universities and the metal AM talent pipeline
+
 sitemap.xml, robots.txt                for search engines
 assets/css/styles.css                  tokens, layout, motion, landing page components
 assets/js/main.js                      theme, nav and dropdown, reveals, gallery, form
@@ -92,6 +96,18 @@ band and build motifs with the rest of the site.
 The pages were generated from one script so the shared markup is identical,
 but they are committed as plain HTML and can be edited directly like any
 other page.
+
+### Blog
+
+`blog.html` lists the posts as cards, newest first. Each post is a flat HTML
+file at the site root (so asset paths match every other page) built on the
+landing page `.article` / `.prose` layout, with a `.postmeta` date line under
+the H1 and a JSON-LD `BlogPosting` and `BreadcrumbList`. Blog sits in the main
+nav between About and Contact and in the footer's Company column; a post marks
+the Blog nav link with `is-within`. To add a post: copy the existing post,
+change its title, description, canonical, `og:` tags, date and JSON-LD, add a
+card to the top of `.posts` in `blog.html` and an entry to `blogPost` there,
+and add the URL to `sitemap.xml`.
 
 The old site's URLs (`/about/`, `/services/`, `/contact/`) now map to
 `about.html`, `services.html` and `contact.html`. Add redirects for the old

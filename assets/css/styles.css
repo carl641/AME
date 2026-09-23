@@ -1188,3 +1188,39 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
   .nav__links .nav__menu a { font-size: 15px; padding: 10px 0; white-space: normal; }
   .nav__links .nav__menu a[aria-current="page"] { border-left: 3px solid var(--accent); padding-left: 12px; }
 }
+
+/* ---------- blog ----------
+   The index lists posts as wide cards; a post reuses .article and
+   .prose from the landing pages, with a date line under the H1. */
+.postmeta {
+  display: flex; flex-wrap: wrap; gap: 6px 18px;
+  font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--fg-3);
+}
+.postmeta > * + *::before { content: ""; display: inline-block; width: 6px; height: 6px; margin-right: 18px; vertical-align: middle; background: var(--accent); border-radius: 50%; }
+.pagehead .postmeta { margin-top: 4px; }
+.pagehead--post h1 { font-size: clamp(1.9rem, 3.4vw, 2.75rem); }
+.prose .post__lead { font-size: clamp(1.08rem, 1.5vw, 1.2rem); color: var(--fg); }
+.prose .post__close { margin-top: clamp(32px, 4vw, 44px); padding-top: 22px; border-top: 1px solid var(--line); }
+
+.posts { display: grid; gap: 18px; }
+.postcard {
+  position: relative; overflow: hidden;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); align-items: stretch;
+  border: 1px solid var(--line); border-radius: var(--r);
+  background: var(--bg-2); color: inherit; text-decoration: none;
+  transition: border-color .18s var(--ease), background-color .18s var(--ease);
+}
+.postcard::before { content: ""; position: absolute; left: 0; top: 0; right: 0; height: 3px; z-index: 1; background: linear-gradient(90deg, var(--metal-a), var(--metal-b) 60%, var(--accent)); }
+.postcard:hover { border-color: var(--accent-ink); background: var(--bg-3); }
+.postcard .shot { border: 0; border-radius: 0; aspect-ratio: auto; min-height: 260px; }
+.postcard__copy { display: grid; gap: 14px; align-content: center; padding: clamp(24px, 3.5vw, 44px); }
+.postcard h2 { font-size: clamp(1.3rem, 2.2vw, 1.75rem); }
+.postcard p:not(.postmeta) { color: var(--fg-2); }
+.postcard__more { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; color: var(--accent-ink); }
+.postcard__more .material-symbols-outlined { font-size: 20px; transition: transform .18s var(--ease); }
+.postcard:hover .postcard__more .material-symbols-outlined { transform: translateX(4px); }
+
+@media (max-width: 760px) {
+  .postcard { grid-template-columns: 1fr; }
+  .postcard .shot { aspect-ratio: 16 / 9; min-height: 0; }
+}
