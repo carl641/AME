@@ -142,20 +142,6 @@
     Array.prototype.forEach.call(revealables, function (el) { io.observe(el); });
   }
 
-  /* ---------- gallery arrows ---------- */
-  var strip = document.getElementById('strip');
-  if (strip) {
-    Array.prototype.forEach.call(document.querySelectorAll('[data-scroll]'), function (btn) {
-      btn.addEventListener('click', function () {
-        var dir = Number(btn.getAttribute('data-scroll'));
-        strip.scrollBy({
-          left: dir * Math.min(strip.clientWidth * 0.8, 640),
-          behavior: reduced ? 'auto' : 'smooth'
-        });
-      });
-    });
-  }
-
   /* ---------- quote form ---------- */
   var form = document.getElementById('quote-form');
   if (form) {
