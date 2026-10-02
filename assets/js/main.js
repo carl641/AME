@@ -268,6 +268,31 @@
     paint();
   }
 
+  /* ---------- video facades ----------
+     A poster stands in for the player; the iframe loads on click. */
+  Array.prototype.forEach.call(document.querySelectorAll('.vid[data-yt]'), function (box) {
+    var id = box.getAttribute('data-yt');
+    var poster = box.querySelector('img');
+    var btn = box.querySelector('.vid__play');
+    if (poster) {
+      poster.addEventListener('error', function () {
+        if (poster.src.indexOf('hqdefault') === -1) poster.src = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg';
+      });
+    }
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+      f.title = btn.getAttribute('aria-label').replace('Play video: ', '');
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.allowFullscreen = true;
+      box.innerHTML = '';
+      box.appendChild(f);
+      box.classList.add('is-playing');
+      f.focus();
+    });
+  });
+
   /* ---------- footer year ---------- */
   var yr = document.getElementById('yr');
   if (yr) yr.textContent = String(new Date().getFullYear());

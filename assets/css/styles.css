@@ -321,7 +321,7 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
 }
 .hero__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
   gap: clamp(32px, 5vw, 72px);
   align-items: center;
 }
@@ -357,6 +357,38 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
 .rail li + li { border-left: 1px solid var(--band-line); }
 .rail__k { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--band-fg-2); }
 .rail__v { font-size: 13px; font-weight: 500; color: var(--band-fg); }
+
+/* Hero video: a poster and play button stand in for the YouTube
+   player, which only loads (from youtube-nocookie) once clicked. */
+.hero__video { margin: 0; background: var(--band-2); border-radius: calc(var(--r) - 1px) calc(var(--r) - 1px) 0 0; overflow: hidden; }
+.vid { position: relative; aspect-ratio: 16 / 9; background: #000; }
+.vid > img, .vid > iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover; }
+.vid > img { opacity: .88; transition: opacity .25s var(--ease); }
+.vid:hover > img { opacity: 1; }
+.vid__play {
+  position: absolute; left: 50%; top: 50%; translate: -50% -50%;
+  width: 76px; height: 76px; border-radius: 50%;
+  display: grid; place-items: center;
+  border: 1px solid rgba(255, 255, 255, .5);
+  background: color-mix(in srgb, var(--accent) 88%, transparent);
+  color: #FFFFFF; cursor: pointer;
+  box-shadow: 0 0 0 10px color-mix(in srgb, var(--accent) 22%, transparent);
+  transition: transform .2s var(--ease), box-shadow .2s var(--ease);
+}
+.vid__play .material-symbols-outlined { font-size: 40px; }
+.vid__play:hover, .vid__play:focus-visible { transform: scale(1.06); box-shadow: 0 0 0 16px color-mix(in srgb, var(--accent) 18%, transparent); }
+.vid__tag {
+  position: absolute; left: 14px; top: 14px;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 10px; border-radius: 999px;
+  background: rgba(0, 0, 0, .6); color: #FFFFFF;
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
+  pointer-events: none;
+}
+.vid__dot { width: 7px; height: 7px; border-radius: 50%; background: #FF6A2B; box-shadow: 0 0 8px #FF6A2B; }
+.vid.is-playing .vid__tag { display: none; }
+.vid__cap { padding: 14px 16px; font-size: 14px; line-height: 1.5; color: var(--band-fg-2); border-top: 1px solid var(--band-line); }
+.vid__cap strong { color: var(--band-fg); font-weight: 600; }
 
 /* ---------- image slots ----------
    A .shot frames a photo at a fixed aspect so nothing shifts while
