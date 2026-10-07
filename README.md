@@ -134,8 +134,9 @@ against the powder supplier data sheet and the program specification before
 the page goes live.
 
 **4. The selected work photo.** The home page feature about the GRCop-42 fuel
-injector currently shows `sample8.jpg`, a copper part with helical channels.
-Swap in a photo of the injector itself if one exists.
+injector currently shows `AME 2.png` from Uploadcare, a copper chamber liner
+with honeycomb and helical channels. Swap in a photo of the injector itself if
+one exists.
 
 ## Build motifs
 

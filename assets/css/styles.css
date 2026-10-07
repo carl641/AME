@@ -458,6 +458,11 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
 }
 .pagehead + .section { padding-top: calc(var(--hang) + clamp(40px, 6vw, 72px)); }
 
+/* cutout: a part shot on a transparent background. The whole part
+   fits inside the frame on a dark stage instead of being cropped. */
+.shot.shot--cutout { background: radial-gradient(ellipse at 50% 45%, var(--band-2) 0%, var(--band) 70%); }
+.shot--cutout > img { object-fit: contain; padding: 5%; }
+
 /* ---------- sections ---------- */
 .section { padding: clamp(64px, 9vw, 120px) 0; }
 .sechead { max-width: 60ch; margin-bottom: clamp(32px, 4vw, 56px); }
