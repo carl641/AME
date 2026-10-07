@@ -5,6 +5,14 @@ before the photos were swapped out. To restore an old photo, check out the file
 from that commit (`git show 1fb50e2:assets/img/sample5.jpg > assets/img/sample5.jpg`)
 and put the `src` back on the lines below.
 
+In the swap, only the part photos (`sample1.jpg` to `sample8.jpg`) were replaced,
+with Uploadcare cutouts listed in `README.md`. The facility photos were kept.
+The old sample files are still in this folder. On the home page, the gallery
+caption "Tensile strength test bars for qualification" became "Printed on the
+build plate"; restore it along with `sample3.jpg`. Restored photos also need
+`shot--cutout` removed from their `<figure>`, and their old `width="4032"
+height="3024"` and `object-position` put back.
+
 The logo (`ameLogo.png`) is in the header and footer of every page and is not
 part of the swap.
 
@@ -94,7 +102,20 @@ part of the swap.
 | `fdm-vs-metal-3d-printing.html` | `sample7.jpg` |
 | `metal-3d-printing-cost.html` | `sample4.jpg` |
 
-### Structured data (`"image"` in JSON-LD)
+### Page images in structured data (`primaryImageOfPage`)
+
+| Page | Photo |
+| --- | --- |
+| `fdm-vs-metal-3d-printing.html` | `sample7.jpg` |
+| `grcop-42-3d-printing.html` | `sample8.jpg` |
+| `inconel-718-3d-printing.html` | `sample6.jpg` |
+| `metal-3d-printing-cost.html` | `sample4.jpg` |
+| `metal-additive-manufacturing.html` | `sample5.jpg` |
+| `laser-powder-bed-fusion.html` | `printer-2.jpg` |
+| `metal-3d-printing-huntsville-al.html` | `amebuilding-1.jpg` |
+| `metal-3d-printing-service.html` | `warehousefloor-2.jpg` |
+
+### Business and article images in structured data (`"image"` in JSON-LD)
 
 `amebuilding-1.jpg` on every article and business schema (index 422, contact 187,
 and the article pages near their ends), except
