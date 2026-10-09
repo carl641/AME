@@ -190,7 +190,7 @@
 
       if (!FORM_ENDPOINT) {
         /* Developer placeholder. Set FORM_ENDPOINT above to go live. */
-        status.textContent = 'This form is not connected to a handler yet. Call (256) 527-1737 in the meantime.';
+        status.textContent = 'This form is not connected to a handler yet. Call (256) 929-2332 in the meantime.';
         return;
       }
 
@@ -205,7 +205,7 @@
         status.textContent = 'Received. An engineer will get back to you.';
         status.classList.add('is-ok');
       }).catch(function () {
-        status.textContent = 'That did not send. Call (256) 527-1737 and we will pick it up from there.';
+        status.textContent = 'That did not send. Call (256) 929-2332 and we will pick it up from there.';
       }).then(function () {
         submit.classList.remove('is-busy');
       });
