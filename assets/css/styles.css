@@ -899,7 +899,50 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
   }
 
   .shot--laser:hover::after { animation: laser-pass 1.6s linear infinite; }
+
+  /* Home page load: the header mark prints from the bottom up. The
+     image is revealed layer by layer (stepped clip) while a teal
+     laser line rides the build front, hatching side to side. The
+     frame shows the top 346 of the image's 446 rows, so the clip
+     starts at 77.6% to begin at the visible bottom edge. */
+  .brand__logo--build { position: relative; }
+  .brand__logo--build img {
+    animation: logo-build 1.8s steps(30, end) .25s both;
+  }
+  .brand__logo--build::before,
+  .brand__logo--build::after {
+    content: ""; position: absolute; pointer-events: none;
+    bottom: 0; opacity: 0;
+  }
+  /* the laser line across the build front */
+  .brand__logo--build::after {
+    left: 0; right: 0; height: 2px; margin-bottom: -1px;
+    background: linear-gradient(90deg, transparent, var(--accent) 12%, #E9FFF8 50%, var(--accent) 88%, transparent);
+    box-shadow: 0 0 6px 1px var(--accent), 0 0 14px 2px rgba(43, 201, 164, .55);
+    animation: logo-laser 1.8s steps(30, end) .25s both;
+  }
+  /* the melt pool, scanning back and forth along the line */
+  .brand__logo--build::before {
+    left: 0; width: 6px; height: 6px; margin: 0 0 -3px -3px;
+    border-radius: 50%; z-index: 1;
+    background: #FFFFFF;
+    box-shadow: 0 0 4px 2px #E9FFF8, 0 0 10px 4px var(--accent);
+    animation:
+      logo-laser 1.8s steps(30, end) .25s both,
+      logo-hatch .15s linear .25s 12 alternate;
+  }
 }
+
+@keyframes logo-build {
+  from { clip-path: inset(77.6% 0 0 0); }
+  to   { clip-path: inset(0 0 0 0); }
+}
+@keyframes logo-laser {
+  0%   { bottom: 0;    opacity: 1; }
+  96%  { bottom: 100%; opacity: 1; }
+  100% { bottom: 100%; opacity: 0; }
+}
+@keyframes logo-hatch { from { left: 0; } to { left: 100%; } }
 
 @keyframes px-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @keyframes px-drift {
