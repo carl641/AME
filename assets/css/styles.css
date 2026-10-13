@@ -51,6 +51,11 @@
   --r: 4px;
   --wrap: 1240px;
   --nav-h: 68px;
+  /* Header height and mark width before the page scrolls; the header
+     shrinks to --nav-h and --logo-w once it sticks. */
+  --nav-h-top: 108px;
+  --logo-w-top: 150px;
+  --logo-w: 76px;
   --hang: clamp(48px, 8vw, 112px);
 
   --sans: "Archivo", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
@@ -222,15 +227,20 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
 
 /* ---------- nav ---------- */
 .nav {
+  --nav-cur: var(--nav-h-top);
   position: sticky; top: 0; z-index: 50;
-  height: var(--nav-h);
+  height: var(--nav-cur);
   background: color-mix(in srgb, var(--bg) 88%, transparent);
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
   border-bottom: 1px solid transparent;
   transition: border-color .25s var(--ease), background-color .25s var(--ease);
 }
-.nav.is-stuck { border-bottom-color: var(--line); }
+.nav.is-stuck { --nav-cur: var(--nav-h); border-bottom-color: var(--line); }
+@media (prefers-reduced-motion: no-preference) {
+  .nav { transition: height .3s var(--ease), border-color .25s var(--ease), background-color .25s var(--ease); }
+  .brand__logo { transition: width .3s var(--ease); }
+}
 
 /* Build progress: a teal line along the foot of the header fills as
    the page scrolls, and a Z height readout beside the theme toggle
@@ -263,13 +273,14 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
    the frame's aspect (788 x 346 of the 788 x 446 file) and clips the
    tagline below it, so one asset serves header and footer. */
 .brand__logo {
-  width: 76px;
+  width: var(--logo-w-top);
   aspect-ratio: 788 / 346;
   overflow: hidden;
   flex: none;
   background: var(--logo-plate);
   border-radius: 3px;
 }
+.nav.is-stuck .brand__logo { width: var(--logo-w); }
 .brand__logo img { width: 100%; height: auto; }
 .brand__full {
   font-family: var(--mono); font-size: 11px; color: var(--fg-3);
@@ -1005,11 +1016,11 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
 }
 
 @media (max-width: 760px) {
-  :root { --nav-h: 62px; }
+  :root { --nav-h: 62px; --nav-h-top: 88px; --logo-w-top: 120px; }
 
   .nav__burger { display: inline-grid; }
   .nav__links {
-    position: fixed; inset: var(--nav-h) 0 auto 0;
+    position: fixed; inset: var(--nav-cur) 0 auto 0;
     display: none;
     flex-direction: column; align-items: stretch; gap: 0;
     background: var(--bg); border-bottom: 1px solid var(--line);
@@ -1243,7 +1254,7 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
   .foot__links { gap: 8px; }
 
   /* the dropdown flattens into the mobile menu */
-  .nav__links.is-open { max-height: calc(100vh - var(--nav-h)); max-height: calc(100dvh - var(--nav-h)); overflow-y: auto; }
+  .nav__links.is-open { max-height: calc(100vh - var(--nav-cur)); max-height: calc(100dvh - var(--nav-cur)); overflow-y: auto; }
   .nav__group { display: block; }
   .nav__group > a { display: block; }
   .nav__more { display: none; }
