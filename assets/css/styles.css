@@ -1282,6 +1282,7 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
 .pagehead--post h1 { font-size: clamp(1.9rem, 3.4vw, 2.75rem); }
 .prose .post__lead { font-size: clamp(1.08rem, 1.5vw, 1.2rem); color: var(--fg); }
 .prose .post__close { margin-top: clamp(32px, 4vw, 44px); padding-top: 22px; border-top: 1px solid var(--line); }
+.prose .post__video { margin: clamp(28px, 4vw, 40px) 0; border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; background: #000; }
 
 .posts { display: grid; gap: 18px; }
 .postcard {
