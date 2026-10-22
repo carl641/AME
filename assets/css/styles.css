@@ -469,6 +469,16 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
 }
 .pagehead + .section { padding-top: calc(var(--hang) + clamp(40px, 6vw, 72px)); }
 
+/* split header: copy on the left, a part photo beside it (quote page) */
+.pagehead__split {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 380px);
+  gap: clamp(28px, 4vw, 64px); align-items: center;
+  padding-top: clamp(44px, 6vw, 80px); padding-bottom: clamp(28px, 4vw, 44px);
+}
+.pagehead__splitcopy { max-width: 68ch; }
+.pagehead__fig { margin: 0; }
+.pagehead__fig .shot { box-shadow: 0 18px 44px rgba(0, 0, 0, .18); }
+
 /* cutout: a part shot on a transparent background. The whole part
    fits inside the frame on a dark stage instead of being cropped. */
 .shot.shot--cutout { background: radial-gradient(ellipse at 50% 45%, var(--band-2) 0%, var(--band) 70%); }
@@ -1048,6 +1058,8 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
   .pagehead__media .shot--cine, .pagehead__media .map { aspect-ratio: 4 / 3; }
   .copyrule { padding-left: 20px; }
   .pagehead__copy.copyrule { padding-left: 44px; }
+  .pagehead__split { grid-template-columns: 1fr; }
+  .pagehead__fig { max-width: 340px; }
   .hatch { width: 380px; height: 380px; top: auto; bottom: -300px; right: -140px; } /* lower right corner, clear of the copy */
   .layers__s--3 { --gap: 144px; }
 }
