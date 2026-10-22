@@ -691,52 +691,44 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
 }
 .map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
 
-/* ---------- form ---------- */
-.form {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
-  background: var(--bg-3);
+/* ---------- quote form (Jotform embed) ----------
+   Jotform writes its own iframe and resizes it to fit the form.
+   The frame reserves height so the page does not jump while it
+   loads, and stays white in both themes to match the form. */
+.jotform {
+  background: #fff;
   border: 1px solid var(--line);
   border-radius: var(--r);
-  padding: clamp(24px, 3vw, 36px);
+  padding: clamp(6px, 1.2vw, 14px);
+  min-height: 560px;
+  overflow: hidden;
 }
-.field { display: grid; gap: 8px; }
-.field--full { grid-column: 1 / -1; }
-.field label { font-size: 13px; font-weight: 600; color: var(--fg); }
-.field input, .field select, .field textarea {
-  width: 100%;
-  font: 400 15px/1.5 var(--sans);
-  color: var(--fg);
-  background: var(--bg);
-  border: 1px solid var(--line-2);
+.jotform iframe { display: block; width: 100%; min-width: 100%; max-width: 100%; border: 0; }
+.contact__lead a { color: var(--accent-ink); }
+
+/* quote page: info column and form in one card that hangs over the seam */
+.quotebox {
+  display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(24px, 3vw, 44px);
+  align-items: start;
+  background: var(--bg-2);
+  border: 1px solid rgba(0, 0, 0, .25);
   border-radius: var(--r);
-  padding: 12px 14px;
-  transition: border-color .18s var(--ease), box-shadow .18s var(--ease);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .28);
+  padding: clamp(20px, 3vw, 40px);
 }
-.field textarea { resize: vertical; min-height: 108px; }
-.field select { appearance: none; background-image: none; cursor: pointer; }
-.field input:focus, .field select:focus, .field textarea:focus {
-  outline: none;
-  border-color: var(--accent-ink);
-  box-shadow: 0 0 0 3px var(--accent-dim);
-}
-.field .hint { font-size: 12.5px; color: var(--fg-2); }
-.field .err { font-size: 12.5px; color: var(--danger); font-weight: 500; }
-.field.has-err input, .field.has-err textarea { border-color: var(--danger); }
-
-.form__foot { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
-.status { font-size: 13.5px; color: var(--fg-2); max-width: 42ch; }
-.status.is-ok { color: var(--fg); font-weight: 500; }
-
-.spinner {
-  display: none;
-  width: 14px; height: 14px; border-radius: 50%;
-  border: 2px solid color-mix(in srgb, var(--on-accent) 35%, transparent);
-  border-top-color: var(--on-accent);
-  animation: spin .7s linear infinite;
-}
-.is-busy .spinner { display: block; }
-.is-busy { pointer-events: none; opacity: .8; }
-@keyframes spin { to { transform: rotate(360deg); } }
+.quotebox__side { display: grid; gap: 18px; align-content: start; }
+.quotebox__side h2 { font-size: clamp(1.6rem, 3vw, 2.3rem); }
+.quotebox__side > p { color: var(--fg-2); max-width: 40ch; }
+.quotebox__list { list-style: none; padding: 0; margin: 0; display: grid; }
+.quotebox__list li { display: flex; gap: 14px; padding: 14px 0; border-top: 1px solid var(--line); font-size: 14.5px; color: var(--fg-2); }
+.quotebox__list strong { color: var(--fg); font-weight: 600; }
+.quotebox__list .material-symbols-outlined { font-size: 20px; color: var(--accent); flex: none; margin-top: 1px; }
+.quotebox__phone { font-family: var(--mono); font-size: 20px; text-decoration: none; color: var(--fg); padding-top: 18px; border-top: 1px solid var(--line); }
+.quotebox__phone span { display: block; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--fg-3); margin-bottom: 6px; }
+.quotebox__phone:hover { color: var(--accent-ink); }
+.quotebox__note { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--fg-2); }
+.quotebox__note .material-symbols-outlined { font-size: 18px; color: var(--accent); flex: none; }
+.cell p a { color: var(--accent-ink); }
 
 /* ---------- footer ---------- */
 .foot { border-top: 1px solid var(--line); padding-top: clamp(48px, 6vw, 72px); }
@@ -987,7 +979,7 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
   .hero__grid { grid-template-columns: 1fr; }
   .split, .split--flip { grid-template-columns: 1fr; }
   .split--flip .split__copy { order: 0; }
-  .contact__grid { grid-template-columns: 1fr; }
+  .contact__grid, .quotebox { grid-template-columns: 1fr; }
   .cta__grid { grid-template-columns: 1fr; align-items: start; }
   .cell--a { grid-column: 1 / -1; grid-row: auto; }
   .cell--b, .cell--c, .cell--d, .cell--e { grid-column: span 6; }
@@ -1049,7 +1041,6 @@ html.icons-ready .material-symbols-outlined { visibility: visible; }
   .svc { grid-template-columns: 1fr; grid-template-rows: auto auto 1fr; }
   .svc .shot { aspect-ratio: 16 / 9; height: auto; }
   .clients__grid { grid-template-columns: 1fr; }
-  .form { grid-template-columns: 1fr; }
   .foot__grid { grid-template-columns: 1fr; gap: 28px; }
   .rail { grid-template-columns: 1fr; }
   .rail li + li { border-left: 0; border-top: 1px solid var(--band-line); }

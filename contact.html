@@ -16,6 +16,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://form.jotform.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap">
 <link rel="stylesheet" href="assets/css/styles.css">
@@ -70,7 +71,7 @@
       <button class="iconbtn" id="theme-toggle" type="button" aria-label="Switch color theme">
         <span class="material-symbols-outlined" aria-hidden="true">contrast</span>
       </button>
-      <a class="btn btn--primary btn--sm nav__cta" href="contact.html#quote">Request a quote</a>
+      <a class="btn btn--primary btn--sm nav__cta" href="quote.html">Request a quote</a>
       <button class="iconbtn nav__burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span class="material-symbols-outlined" aria-hidden="true">menu</span>
       </button>
@@ -107,7 +108,7 @@
     <div class="wrap contact__grid">
       <div class="contact__info reveal">
         <h2>Request a quote</h2>
-        <p class="contact__lead">Quantity, envelope, tolerances, target date. Anything you have. An engineer reads it and gets back to you.</p>
+        <p class="contact__lead">Quantity, envelope, tolerances, target date. Anything you have. An engineer reads it and gets back to you. Buying for a program? <a href="quote.html">See how quoting works</a>.</p>
 
         <div class="contact__block">
           <span class="material-symbols-outlined" aria-hidden="true">call</span>
@@ -127,50 +128,9 @@
         </div>
       </div>
 
-      <form class="form reveal" id="quote-form" novalidate>
-        <div class="field">
-          <label for="f-name">Name</label>
-          <input id="f-name" name="name" type="text" autocomplete="name" required>
-          <p class="err" id="e-name" hidden>Tell us who to reply to.</p>
-        </div>
-
-        <div class="field">
-          <label for="f-org">Company</label>
-          <input id="f-org" name="company" type="text" autocomplete="organization">
-          <p class="hint">Optional.</p>
-        </div>
-
-        <div class="field">
-          <label for="f-email">Email</label>
-          <input id="f-email" name="email" type="email" autocomplete="email" required>
-          <p class="err" id="e-email" hidden>That address does not look right.</p>
-        </div>
-
-        <div class="field">
-          <label for="f-mat">Material</label>
-          <select id="f-mat" name="material">
-            <option value="in718">Inconel 718</option>
-            <option value="grcop42">GRCop-42</option>
-            <option value="other">Another metal, on request</option>
-            <option value="unsure">Not sure yet</option>
-          </select>
-        </div>
-
-        <div class="field field--full">
-          <label for="f-msg">What are you building</label>
-          <textarea id="f-msg" name="message" rows="4" required></textarea>
-          <p class="hint">Quantity, envelope, tolerances, target date. Anything you have.</p>
-          <p class="err" id="e-msg" hidden>Give us a line or two to work with.</p>
-        </div>
-
-        <div class="field field--full form__foot">
-          <button class="btn btn--primary" type="submit" id="submit">
-            <span class="submit__label">Send request</span>
-            <span class="spinner" aria-hidden="true"></span>
-          </button>
-          <p class="status" id="form-status" role="status" aria-live="polite"></p>
-        </div>
-      </form>
+      <div class="jotform reveal">
+        <script type="text/javascript" src="https://form.jotform.com/jsform/262938119776068"></script>
+      </div>
     </div>
   </section>
 
@@ -225,7 +185,7 @@
       <a href="metal-3d-printing-huntsville-al.html">Huntsville, AL</a>
       <a href="blog.html">Blog</a>
       <a href="contact.html" aria-current="page">Contact</a>
-      <a href="contact.html#quote">Request a quote</a>
+      <a href="quote.html">Request a quote</a>
     </nav>
 
     <address class="foot__addr">
