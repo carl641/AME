@@ -110,8 +110,15 @@ change its title, description, canonical, `og:` tags, date and JSON-LD, add a
 card to the top of `.posts` in `blog.html` and an entry to `blogPost` there,
 and add the URL to `sitemap.xml`.
 
+Every link, canonical, `og:url`, JSON-LD URL and sitemap entry uses clean
+URLs with no `.html` (`/about`, `/quote`, home is `/`). The files keep their
+`.html` names; the host serves `about.html` at `/about`. Netlify, Cloudflare
+Pages and GitHub Pages do this out of the box, and `vercel.json` turns on
+`cleanUrls` for Vercel. Because the links are extensionless, browse the site
+through a static host or local server rather than opening files directly.
+
 The old site's URLs (`/about/`, `/services/`, `/contact/`) now map to
-`about.html`, `services.html` and `contact.html`. Add redirects for the old
+`/about`, `/services` and `/contact`. Add redirects for the old
 paths at the host if you want to keep them for SEO. `/gallery/` has no page of
 its own; the parts gallery lives on the home page.
 
@@ -121,8 +128,7 @@ its own; the parts gallery lives on the home page.
 262938119776068 with its script tag
 (`https://form.jotform.com/jsform/262938119776068`), inside a `.jotform`
 frame. Submissions, notifications and fields are managed in Jotform. To swap
-the form, change the ID in both pages. Most static hosts (Netlify, Vercel,
-Cloudflare Pages, GitHub Pages) also serve `quote.html` at `/quote`.
+the form, change the ID in both pages.
 
 **2. Photo weight.** The photos in `assets/img/` are used at their original
 size (up to 4032 x 3024, about 600 to 850 KB each). Everything below the fold is
