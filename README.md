@@ -114,7 +114,9 @@ Every link, canonical, `og:url`, JSON-LD URL and sitemap entry uses clean
 URLs with no `.html` (`/about`, `/quote`, home is `/`). The files keep their
 `.html` names; the host serves `about.html` at `/about`. Netlify, Cloudflare
 Pages and GitHub Pages do this out of the box, and `vercel.json` turns on
-`cleanUrls` for Vercel. Because the links are extensionless, browse the site
+`cleanUrls` for Vercel. On Apache (most cPanel and shared hosting),
+`.htaccess` serves the clean URLs, 301s old `.html` and trailing-slash
+addresses to them, and sends `/index.html` to `/`. Because the links are extensionless, browse the site
 through a static host or local server rather than opening files directly.
 
 The old site's URLs (`/about/`, `/services/`, `/contact/`) now map to
