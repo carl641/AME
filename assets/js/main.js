@@ -9,11 +9,6 @@
 (function () {
   'use strict';
 
-  /* Set this to your form handler endpoint (Formspree, Netlify
-     Forms, a Lambda, whatever you use). While it is empty the
-     form validates and then tells the visitor to call instead. */
-  var FORM_ENDPOINT = '';
-
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- theme ---------- */
@@ -140,76 +135,6 @@
       });
     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
     Array.prototype.forEach.call(revealables, function (el) { io.observe(el); });
-  }
-
-  /* ---------- quote form ---------- */
-  var form = document.getElementById('quote-form');
-  if (form) {
-    var status = document.getElementById('form-status');
-    var submit = document.getElementById('submit');
-
-    var checks = [
-      { id: 'f-name',  err: 'e-name',  test: function (v) { return v.trim().length > 1; } },
-      { id: 'f-email', err: 'e-email', test: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()); } },
-      { id: 'f-msg',   err: 'e-msg',   test: function (v) { return v.trim().length > 8; } }
-    ];
-
-    var validate = function (check, silent) {
-      var input = document.getElementById(check.id);
-      var err = document.getElementById(check.err);
-      var ok = check.test(input.value);
-      if (!silent) {
-        input.parentNode.classList.toggle('has-err', !ok);
-        err.hidden = ok;
-        input.setAttribute('aria-invalid', String(!ok));
-      }
-      return ok;
-    };
-
-    checks.forEach(function (check) {
-      var input = document.getElementById(check.id);
-      input.addEventListener('blur', function () { validate(check); });
-      input.addEventListener('input', function () {
-        if (input.parentNode.classList.contains('has-err')) validate(check);
-      });
-    });
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      status.textContent = '';
-      status.classList.remove('is-ok');
-
-      var valid = true;
-      checks.forEach(function (check) { if (!validate(check)) valid = false; });
-      if (!valid) {
-        status.textContent = 'Check the highlighted fields and try again.';
-        var firstBad = form.querySelector('.has-err input, .has-err textarea');
-        if (firstBad) firstBad.focus();
-        return;
-      }
-
-      if (!FORM_ENDPOINT) {
-        /* Developer placeholder. Set FORM_ENDPOINT above to go live. */
-        status.textContent = 'This form is not connected to a handler yet. Call (256) 929-2332 in the meantime.';
-        return;
-      }
-
-      submit.classList.add('is-busy');
-      fetch(FORM_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(form)
-      }).then(function (res) {
-        if (!res.ok) throw new Error('Bad response');
-        form.reset();
-        status.textContent = 'Received. An engineer will get back to you.';
-        status.classList.add('is-ok');
-      }).catch(function () {
-        status.textContent = 'That did not send. Call (256) 929-2332 and we will pick it up from there.';
-      }).then(function () {
-        submit.classList.remove('is-busy');
-      });
-    });
   }
 
   /* ---------- build motifs ----------

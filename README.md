@@ -10,6 +10,7 @@ index.html                             home
 about.html                             about
 services.html                          services hub, links to every page below
 contact.html                           contact: map, phone, address and the quote form
+quote.html                             request a quote: landing page for buyers, Jotform quote form
 
 metal-3d-printing-service.html         service page: what the job includes, specs, choosing a shop
 metal-additive-manufacturing.html      primer: process families, standards, where LPBF fits
@@ -26,7 +27,7 @@ huntsville-universities-metal-3d-printing-talent.html
 
 sitemap.xml, robots.txt                for search engines
 assets/css/styles.css                  tokens, layout, motion, landing page components
-assets/js/main.js                      theme, nav and dropdown, reveals, gallery, form
+assets/js/main.js                      theme, nav and dropdown, reveals, gallery
 assets/img/                            photography and the logo (see below)
 tools/build-single-file.js             bundles the home page into dist/preview.html
 ```
@@ -62,7 +63,7 @@ the footer shows the full lockup.
 Every page shares the same header and footer markup. The nav is
 Home, Services (with a dropdown of the service, material and guide pages),
 About, Contact, and each page marks its own link with `aria-current="page"`.
-"Request a quote" everywhere points at `contact.html#quote`.
+"Request a quote" everywhere points at `quote.html`.
 
 The footer carries every page in three columns, so each landing page is
 linked from every other page.
@@ -116,11 +117,12 @@ its own; the parts gallery lives on the home page.
 
 ## Before this goes live
 
-**1. The quote form.** Set `FORM_ENDPOINT` at the top of `assets/js/main.js` to
-your handler (Formspree, Netlify Forms, a Lambda). Until it is set the form
-validates normally and then tells the visitor to call. The company email address
-was not available when this was built, so the contact page leads with the
-phone number.
+**1. The quote form.** `quote.html` and `contact.html` both embed Jotform form
+262938119776068 with its script tag
+(`https://form.jotform.com/jsform/262938119776068`), inside a `.jotform`
+frame. Submissions, notifications and fields are managed in Jotform. To swap
+the form, change the ID in both pages. Most static hosts (Netlify, Vercel,
+Cloudflare Pages, GitHub Pages) also serve `quote.html` at `/quote`.
 
 **2. Photo weight.** The photos in `assets/img/` are used at their original
 size (up to 4032 x 3024, about 600 to 850 KB each). Everything below the fold is
