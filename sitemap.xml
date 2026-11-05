@@ -62,8 +62,14 @@
   </url>
   <url>
     <loc>https://addmaneng.com/blog</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://addmaneng.com/how-to-qualify-metal-lpbf-supplier</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
