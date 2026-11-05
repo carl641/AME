@@ -128,12 +128,17 @@
   } else {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
+        /* Reveal at 15% visible, or, for blocks taller than the
+           viewport (a long article on a phone can never reach 15%),
+           once it covers 15% of the viewport. */
+        var root = entry.rootBounds;
+        var big = root && entry.intersectionRect.height >= root.height * 0.15;
+        if (entry.isIntersecting && (entry.intersectionRatio >= 0.15 || big)) {
           entry.target.classList.add('in');
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: [0, 0.01, 0.05, 0.1, 0.15], rootMargin: '0px 0px -40px 0px' });
     Array.prototype.forEach.call(revealables, function (el) { io.observe(el); });
   }
 
