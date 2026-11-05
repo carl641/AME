@@ -24,6 +24,8 @@ metal-3d-printing-huntsville-al.html   location page: the shop, the local ecosys
 blog.html                              blog index, newest post first
 huntsville-universities-metal-3d-printing-talent.html
                                        post: Huntsville universities and the metal AM talent pipeline
+how-to-qualify-metal-lpbf-supplier.html
+                                       post: qualifying a metal LPBF supplier for production
 
 sitemap.xml, robots.txt                for search engines
 assets/css/styles.css                  tokens, layout, motion, landing page components
