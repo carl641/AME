@@ -24,16 +24,16 @@ since not every network reads AVIF or transparency. Their frames carry
 
 | File | Shows | Where it is used |
 | --- | --- | --- |
-| `AME 1.png` (`7c30dc75`) | Thrust chamber with a bell top, external feed lines, scalloped flange | About photo grid, Inconel 718 grid |
+| `AME 1.png` (`7c30dc75`) | Thrust chamber with a bell top, external feed lines, scalloped flange | About photo grid, Inconel 718 grid, quote page header |
 | `AME 2.png` (`a419fdb0`) | Copper chamber liner, honeycomb and helical channels | Home selected work feature, GRCop-42 grid |
 | `AME 3.png` (`5f3d024a`) | Same style copper liner, seen from the top | About materials, GRCop-42 header and social card |
-| `AME 4.png` (`766b79c7`) | Two injector bodies with AME lettering, one cut away | About photo grid, GRCop-42 grid, LPBF grid |
+| `AME 4.png` (`766b79c7`) | Two injector bodies with AME lettering, one cut away | About photo grid, GRCop-42 grid, LPBF grid, services card 02, additive manufacturing grid |
 | `AME 5.png` (`1d83eb2b`) | Rocket thrust chamber with a ribbed coolant manifold | Services card 01, additive manufacturing header and social card, Inconel 718 grid |
 | `AME 6.png` (`43cd6fdf`) | Manifold housing with angled port bosses | Home gallery, Inconel 718 header and social card |
 | `AME 7.png` (`a6ab3e6c`) | Curved blade with visible layer lines and edge channels | Home gallery, additive manufacturing grid, LPBF grid, cost header and social card |
-| `AME 8.png` (`31efe934`) | Head with a honeycomb lattice face on its build plate | Additive manufacturing grid |
+| `AME 8.png` (`31efe934`) | Head with a honeycomb lattice face on its build plate | Additive manufacturing grid, home gallery |
 | `AME 9.png` (`fcf1db4d`) | Golf wedge head on its build plate | Home gallery, LPBF grid |
-| `AME 10.png` (`c355e778`) | Sectioned silver injector block | Home gallery, services card 02, additive manufacturing grid, GRCop-42 grid |
+| `AME 10.png` (`c355e778`) | Sectioned silver injector block | Not used (removed from the site) |
 | `AME 11.png` (`f4594b79`) | Side of the sectioned rocket shaped part | Inconel 718 grid |
 | `AME 12.png` (`4d5d1a37`) | Front of the sectioned rocket shaped part | About photo grid, FDM header and social card |
 
